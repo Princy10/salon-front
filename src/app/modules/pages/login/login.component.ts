@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/modules/services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,5 +8,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  username: string = '';
+  password: string = '';
 
+  constructor(
+    private userService: UserService,
+    private router: Router) {}
+
+  login() {
+    this.userService.login(this.username, this.password).subscribe(
+      (user) => {
+        // Stocker le jeton JWT dans le stockage local
+        localStorage.setItem('token', user.token);
+        console.log('mande');
+        
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        // Gérer les erreurs de connexion
+        console.log('rano');
+        
+        console.error(error);
+      }
+    );
+  }
 }

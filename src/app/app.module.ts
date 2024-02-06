@@ -9,13 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './modules/templ/footer/footer.component';
 import { NavbarComponent } from './modules/templ/navbar/navbar.component';
 import { LoginComponent } from './modules/pages/login/login.component';
+import { HomeComponent } from './modules/pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
