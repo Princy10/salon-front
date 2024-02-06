@@ -1,33 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { LayoutComponent } from './modules/templ/layout/layout.component';
 import { LoginComponent } from './modules/pages/login/login.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { AuthGuard } from './modules/guard/auth.guard';
 
 const routes: Routes = [
+  // without layout
+  { 
+    path: 'login',
+    component: LoginComponent,
+  },
+  // with layout
   {
     path: '',
-    component: AppComponent,
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'home',
         pathMatch: 'full',
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
       },
       {
         path: 'home',
         component: HomeComponent,
-        canActivate: [AuthGuard]
       },
-      { path: '**', redirectTo: 'login' },
     ],
   },
-  { path: '**', redirectTo: 'login' },
+  // pour les routes inconnues
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
