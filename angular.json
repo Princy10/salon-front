@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "m1p10mean-achille-hajaina": {
+    "m1p10mean-princy-nampiana": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/m1p10mean-achille-hajaina",
+            "outputPath": "dist/m1p10mean-princy-nampiana",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -60,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "m1p10mean-achille-hajaina:build:production"
+              "browserTarget": "m1p10mean-princy-nampiana:build:production"
             },
             "development": {
-              "browserTarget": "m1p10mean-achille-hajaina:build:development"
+              "browserTarget": "m1p10mean-princy-nampiana:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "m1p10mean-achille-hajaina:build"
+            "browserTarget": "m1p10mean-princy-nampiana:build"
           }
         },
         "test": {
@@ -87,7 +88,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/style.scss"
             ],
             "scripts": []
