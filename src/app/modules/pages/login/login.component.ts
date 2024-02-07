@@ -20,14 +20,12 @@ export class LoginComponent {
       (user) => {
         // Stocker le jeton JWT dans le stockage local
         localStorage.setItem('token', user.token);
-        console.log('mande');
+        console.log('login successful');
         
         this.router.navigate(['/home']);
       },
       (error) => {
-        // Gérer les erreurs de connexion
-        console.log('rano');
-        
+        console.log('login error');
         console.error(error);
       }
     );
