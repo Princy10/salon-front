@@ -12,6 +12,8 @@ import { LoginComponent } from './modules/pages/login/login.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { LayoutComponent } from './modules/templ/layout/layout.component';
 import { SidebarComponent } from './modules/templ/sidebar/sidebar.component';
+import { ServiceSalonComponent } from './modules/pages/service-salon/service-salon.component';
+import { ServiceListeComponent } from './modules/pages/service-liste/service-liste.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SidebarComponent } from './modules/templ/sidebar/sidebar.component';
     LoginComponent,
     HomeComponent,
     LayoutComponent,
-    SidebarComponent
+    SidebarComponent,
+    ServiceSalonComponent,
+    ServiceListeComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './modules/templ/layout/layout.component';
 import { LoginComponent } from './modules/pages/login/login.component';
 import { HomeComponent } from './modules/pages/home/home.component';
+import { ServiceSalonComponent } from './modules/pages/service-salon/service-salon.component';
+import { ServiceListeComponent } from './modules/pages/service-liste/service-liste.component';
 import { AuthGuard } from './modules/guard/auth.guard';
 
 const routes: Routes = [
@@ -25,6 +27,14 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+      },
+      {
+        path: 'service',
+        component: ServiceSalonComponent,
+      },
+      {
+        path: 'liste_service',
+        component: ServiceListeComponent,
       },
     ],
   },
