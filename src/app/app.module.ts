@@ -12,6 +12,7 @@ import { LoginComponent } from './modules/pages/login/login.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { LayoutComponent } from './modules/templ/layout/layout.component';
 import { SidebarComponent } from './modules/templ/sidebar/sidebar.component';
+import { RegisterComponent } from './modules/pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SidebarComponent } from './modules/templ/sidebar/sidebar.component';
     LoginComponent,
     HomeComponent,
     LayoutComponent,
-    SidebarComponent
+    SidebarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

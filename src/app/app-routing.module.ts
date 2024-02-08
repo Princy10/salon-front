@@ -4,12 +4,17 @@ import { LayoutComponent } from './modules/templ/layout/layout.component';
 import { LoginComponent } from './modules/pages/login/login.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { AuthGuard } from './modules/guard/auth.guard';
+import { RegisterComponent } from './modules/pages/register/register.component';
 
 const routes: Routes = [
   // without layout
   { 
     path: 'login',
     component: LoginComponent,
+  },
+  { 
+    path: 'register',
+    component: RegisterComponent,
   },
   // with layout
   {
