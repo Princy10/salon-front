@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './modules/templ/layout/layout.component';
-import { LoginComponent } from './modules/pages/login/login.component';
+import { LayoutComponent } from './modules/pages/templ/layout/layout.component';
+import { LoginComponent } from './modules/pages/auth/login/login.component';
 import { HomeComponent } from './modules/pages/home/home.component';
-import { ServiceSalonComponent } from './modules/pages/service-salon/service-salon.component';
-import { ServiceListeComponent } from './modules/pages/service-liste/service-liste.component';
-import { ServiceUpdateComponent } from './modules/pages/service-update/service-update.component';
 import { AuthGuard } from './modules/guard/auth.guard';
-import { RegisterComponent } from './modules/pages/register/register.component';
+import { RegisterComponent } from './modules/pages/auth/register/register.component';
+import { ListServiceComponent } from './modules/pages/manager/salon-service/list-service/list-service.component';
+import { AddServiceComponent } from './modules/pages/manager/salon-service/add-service/add-service.component';
 
 const routes: Routes = [
   // without layout
@@ -35,20 +34,15 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'service',
-        component: ServiceSalonComponent,
+        path: 'list-service',
+        component: ListServiceComponent,
       },
       {
-        path: 'liste_service',
-        component: ServiceListeComponent,
-      },
-      {
-        path: 'update_service/:id',
-        component: ServiceUpdateComponent,
+        path: 'add-service',
+        component: AddServiceComponent,
       },
     ],
   },
-  // pour les routes inconnues
   { path: '**', redirectTo: 'home' },
 ];
 

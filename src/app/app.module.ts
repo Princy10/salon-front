@@ -6,30 +6,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FooterComponent } from './modules/templ/footer/footer.component';
-import { NavbarComponent } from './modules/templ/navbar/navbar.component';
-import { LoginComponent } from './modules/pages/login/login.component';
+import { LoginComponent } from './modules/pages/auth/login/login.component';
 import { HomeComponent } from './modules/pages/home/home.component';
-import { LayoutComponent } from './modules/templ/layout/layout.component';
-import { SidebarComponent } from './modules/templ/sidebar/sidebar.component';
-import { ServiceSalonComponent } from './modules/pages/service-salon/service-salon.component';
-import { ServiceListeComponent } from './modules/pages/service-liste/service-liste.component';
-import { RegisterComponent } from './modules/pages/register/register.component';
-import { ServiceUpdateComponent } from './modules/pages/service-update/service-update.component';
+import { LayoutComponent } from './modules/pages/templ/layout/layout.component';
+import { SidebarComponent } from './modules/pages/templ/sidebar/sidebar.component';
+import { RegisterComponent } from './modules/pages/auth/register/register.component';
+import { AddServiceComponent } from './modules/pages/manager/salon-service/add-service/add-service.component';
+import { ListServiceComponent } from './modules/pages/manager/salon-service/list-service/list-service.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    NavbarComponent,
     LoginComponent,
+    RegisterComponent,
     HomeComponent,
     LayoutComponent,
     SidebarComponent,
-    ServiceSalonComponent,
-    ServiceListeComponent,
-    RegisterComponent,
-    ServiceUpdateComponent
+    AddServiceComponent,
+    ListServiceComponent
   ],
   imports: [
     BrowserModule,

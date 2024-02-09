@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Liste Service</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Titre</th>
+                            <th>Prix</th>
+                            <th>Duree</th>
+                            <th>Commission</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let service of services; let i = index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ service.titre }}</td>
+                            <td>{{ service.prix }} Ar</td>
+                            <td>{{ service.durer }}</td>
+                            <td>{{ service.commission }}</td>
+                            <td>
+                                <button (click)="updateService(service._id)" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>  
+                            <td>
+                                <button class="btn btn-danger btn-circle btn-sm">
+                                  <i class="fas fa-trash"></i>
+                                </button>
+                              </td>                              
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="serviceModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update de service</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ serviceIDclicked }}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>        
+    </div>
+</div>

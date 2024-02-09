@@ -13,19 +13,23 @@ export class SidebarComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      this.user = JSON.parse(currentUser);
+    }
   }
 
   logoutCurrentUser(): void {
-    const token = this.user ? this.user.token : null;
+    const token = localStorage.getItem('token');
     if (!token) {
-      console.error('Token non trouvé dans le stockage de session');
+      console.error('Token non trouvé dans le stockage local');
       return;
     }
     this.userService.logout(token).subscribe(
       () => {
         console.log("Déconnexion réussie");
-        sessionStorage.removeItem('currentUser'); // Remove user data from sessionStorage on logout
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('token');
         this.router.navigate(['/login']);
       },
       (error) => {
