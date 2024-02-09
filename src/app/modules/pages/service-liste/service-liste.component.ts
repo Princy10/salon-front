@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Services } from 'src/app/modules/models/services';
 import { ServiceSalonService } from 'src/app/modules/services/service_salon/service-salon.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-liste',
@@ -9,8 +10,9 @@ import { ServiceSalonService } from 'src/app/modules/services/service_salon/serv
 })
 export class ServiceListeComponent {
   services: Services[] = [];
+  service: Services | undefined;
 
-  constructor(private serviceSalonService: ServiceSalonService) { }
+  constructor(private serviceSalonService: ServiceSalonService,private router: Router) { }
 
   ngOnInit(): void {
     this.getAllServices();
@@ -32,6 +34,19 @@ export class ServiceListeComponent {
     }, error => {
       console.error('Erreur lors de la suppression du service', error);
     });
+  }
+
+  getByIdService(serviceId: string){
+    this.serviceSalonService.getById_service(serviceId).subscribe(services => {
+      this.service = services;
+      this.router.navigate(['/update_service', serviceId]);
+    }, error => {
+      console.error('Erreur lors de la récupération des services', error);
+    });
+  }
+
+  goToUpdatePage(serviceId: string) {
+    this.router.navigate(['/update_service', serviceId]);
   }
 
 }

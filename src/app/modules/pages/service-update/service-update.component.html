@@ -1,0 +1,25 @@
+<div>
+    <h2>Modifier le service</h2>
+    <form (ngSubmit)="updateService()" #updateForm="ngForm">
+      <div class="form-group">
+        <label for="titre">Titre</label>
+        <input type="text" class="form-control" id="titre" name="titre" [(ngModel)]="service.titre"  required>
+      </div>
+      <div class="form-group">
+        <label for="titre">Prix</label>
+        <input type="text" class="form-control" id="prix" name="prix" [(ngModel)]="service.prix" required>
+      </div>
+      <div class="form-group">
+        <label for="durer">Duré</label>
+        <input type="number" class="form-control" id="durer" name="durer" [(ngModel)]="service.durer" required>
+      </div>
+      <div class="form-group">
+        <label for="commission">Commission</label>
+        <input type="number" class="form-control" id="commission" name="commission" [(ngModel)]="service.commission" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+  </div>
+  <a href="/liste_service">retour</a>
+
+  

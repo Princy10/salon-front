@@ -16,7 +16,7 @@
         <td>{{ service.durer }} min</td>
         <td>{{ service.commission }} %</td>
         <td><button (click)="deleteService(service._id)" class="btn btn-danger">Supprimer</button></td>
-        <td><button type="button" class="btn btn-info">Modifier</button></td>
+        <td><button (click)="getByIdService(service._id)" class="btn btn-info">Modifier</button></td>
       </tr>
     </tbody>
   </table>

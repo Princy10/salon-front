@@ -14,6 +14,8 @@ import { LayoutComponent } from './modules/templ/layout/layout.component';
 import { SidebarComponent } from './modules/templ/sidebar/sidebar.component';
 import { ServiceSalonComponent } from './modules/pages/service-salon/service-salon.component';
 import { ServiceListeComponent } from './modules/pages/service-liste/service-liste.component';
+import { RegisterComponent } from './modules/pages/register/register.component';
+import { ServiceUpdateComponent } from './modules/pages/service-update/service-update.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ServiceListeComponent } from './modules/pages/service-liste/service-lis
     SidebarComponent,
     ServiceSalonComponent,
     ServiceListeComponent,
+    RegisterComponent,
+    ServiceUpdateComponent
   ],
   imports: [
     BrowserModule,

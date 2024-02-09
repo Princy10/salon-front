@@ -45,4 +45,27 @@ export class ServiceSalonService {
     return this.http.delete<Services>(`${environments.BASE_URL}/services/delete_service/${_id}`, { headers });
   }
 
+  getById_service(_id: string): Observable<Services> {
+    const token = localStorage.getItem('token'); // Récupérez le token depuis le service d'authentification
+    if (!token) {
+      throw new Error('Token non trouvé'); // Gérer le cas où le token n'est pas trouvé
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Services>(`${environments.BASE_URL}/services/list_service/${_id}`, { headers });
+  }
+
+  updateService(serviceId: string, updatedServiceData: Services): Observable<Services> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token non trouvé');
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<Services>(`${environments.BASE_URL}/services/update_service/${serviceId}`, updatedServiceData, { headers });
+  }
+
+
 }
