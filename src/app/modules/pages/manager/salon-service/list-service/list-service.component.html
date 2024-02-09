@@ -27,12 +27,12 @@
                             <td>{{ service.durer }}</td>
                             <td>{{ service.commission }}</td>
                             <td>
-                                <button (click)="updateService(service._id)" class="btn btn-primary btn-circle btn-sm">
+                                <button class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target="#serviceModal" (click)="getServiceById(service._id)">
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </td>  
                             <td>
-                                <button class="btn btn-danger btn-circle btn-sm">
+                                <button class="btn btn-danger btn-circle btn-sm"  data-toggle="modal" data-target="#deleteModal" (click)="getServiceById(service._id)">
                                   <i class="fas fa-trash"></i>
                                 </button>
                               </td>                              
@@ -45,21 +45,53 @@
     </div>
 </div>
 
-<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="serviceModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Modal update service -->
+<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update de service</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                {{ serviceIDclicked }}
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="serviceById.titre" name="titre"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="serviceById.prix" name="prix"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="serviceById.durer" name="durer"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="serviceById.commission" name="commission"/>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" data-dismiss="modal" (click)="updateServiceById(serviceById._id)" >Update</button>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<!-- Modal delete service -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-danger" data-dismiss="modal" (click)="deleteServiceById(serviceById._id)" >Delete</button>
             </div>
         </div>        
     </div>
