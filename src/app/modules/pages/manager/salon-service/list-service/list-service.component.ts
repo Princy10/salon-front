@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SalonService } from 'src/app/modules/services/salon/salon.service';
-import * as $ from 'jquery';
+//import * as $ from 'jquery';
 
 @Component({
   selector: 'app-list-service',
