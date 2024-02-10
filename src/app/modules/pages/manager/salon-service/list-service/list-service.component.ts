@@ -9,7 +9,12 @@ import { SalonService } from 'src/app/modules/services/salon/salon.service';
 })
 export class ListServiceComponent implements OnInit {
   services: any[] = []
-  serviceIDclicked: string = ""
+  serviceById: any = {
+    "titre": "",
+    "prix": "",
+    "durer": "",
+    "commission": ""
+  }
 
   constructor(private salonService: SalonService) { }
 
@@ -29,13 +34,41 @@ export class ListServiceComponent implements OnInit {
     );
   }
 
-  updateService(serviceId: string): void {
-    console.log("ok =>"+serviceId)
-    this.serviceIDclicked = serviceId
-    const modalElement = document.getElementById('serviceModal');
-      if (modalElement) {
-        modalElement.classList.add('show');
-        modalElement.style.display = 'block';
-      }
+  getServiceById(id_service: string) {
+    this.salonService.getServiceById(id_service).subscribe((res) => {
+      this.serviceById = res as any;
+      // console.log("service by id =>"+this.serviceById._id);
+    })
   }
+  
+  updateServiceById(id_service: string) {
+    // console.log("ao am update =>"+id_service);
+    this.salonService.updateService(id_service, this.serviceById).subscribe(
+      (res) => {
+        // console.log("Service mis à jour avec succès :", res);
+        // logique: rehefa success reponse HTTP de tafiditra base izy zay de soloina anle input ny valeur ao HTML
+        this.services.forEach((service, i) => {
+          if (service._id === id_service) {
+            this.services[i] = this.serviceById;
+          }
+        });
+      },
+      (error) => {
+        console.error("Erreur lors de la mise à jour du service :", error);
+      }
+    );
+  }  
+  
+
+  deleteServiceById(id_service: string) {
+    this.salonService.deleteService(id_service).subscribe(
+      (res) => {
+        // console.log("Service supprimé avec succès :", res);
+        this.services = this.services.filter(service => service._id !== id_service);
+      },
+      (error) => {
+        console.error("Erreur lors de la suppression du service :", error);
+      }
+    );
+  }  
 }
