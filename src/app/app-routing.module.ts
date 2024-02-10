@@ -7,6 +7,7 @@ import { AuthGuard } from './modules/guard/auth.guard';
 import { RegisterComponent } from './modules/pages/auth/register/register.component';
 import { ListServiceComponent } from './modules/pages/manager/salon-service/list-service/list-service.component';
 import { AddServiceComponent } from './modules/pages/manager/salon-service/add-service/add-service.component';
+import { AddEmployerComponent } from './modules/pages/manager/salon-gestion_personel/add-employer/add-employer.component';
 
 const routes: Routes = [
   // without layout
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'add-service',
         component: AddServiceComponent,
+      },
+      {
+        path: 'add-employer',
+        component: AddEmployerComponent,
       },
     ],
   },

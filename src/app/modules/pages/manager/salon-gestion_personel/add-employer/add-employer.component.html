@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add Service</h6>
+            </div>
+
+            <div class="card-body">
+                <form (ngSubmit)="ajout_employer()">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Nom</label>
+                            <input type="text" [(ngModel)]="Employer.nom" name="titre" class="form-control"  placeholder="Nom">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Prénom</label>
+                            <input type="text" [(ngModel)]="Employer.prenom" name="prix" class="form-control"  placeholder="Prénom">
+                         </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Username</label>
+                            <input type="text" [(ngModel)]="Employer.username" name="durer" class="form-control"  placeholder="Username">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Password</label>
+                            <input type="password" [(ngModel)]="Employer.password" name="commission" class="form-control"  placeholder="mot de passe">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">CIN</label>
+                            <input type="text" [(ngModel)]="Employer.cin" name="durer" class="form-control"  placeholder="54654564654654">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Date de naissance</label>
+                            <input type="date" [(ngModel)]="Employer.date_naissance" name="commission" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Contact</label>
+                            <input type="text" [(ngModel)]="Employer.contact" name="durer" class="form-control"  placeholder="0325678954">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Adresse</label>
+                            <input type="text" [(ngModel)]="Employer.adresse" name="commission" class="form-control"  placeholder="Adresse">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="mail" [(ngModel)]="Employer.mail" name="durer" class="form-control"  placeholder="email@example.com">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Role</label>
+                            <input type="text" [(ngModel)]="Employer.role" name="commission" class="form-control"  placeholder="employer">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Code Fonction</label>
+                            <input type="text" [(ngModel)]="Employer.code_fonction" name="durer" class="form-control"  placeholder="EMP/MAN">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Salaire</label>
+                            <input type="text" [(ngModel)]="Employer.salaire" name="commission" class="form-control"  placeholder="20000">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Date début</label>
+                            <input type="date" [(ngModel)]="Employer.date_debut" name="durer" class="form-control" >
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Date fin</label>
+                            <input type="date" [(ngModel)]="Employer.date_fin" name="commission" class="form-control"  >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Heure de travail</label>
+                            <input type="text" [(ngModel)]="Employer.heure_travail" name="durer" class="form-control"  placeholder="120min">
+                        </div>
+                    </div>
+                    <div class="form-group"></div>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -13,6 +13,7 @@ import { SidebarComponent } from './modules/pages/templ/sidebar/sidebar.componen
 import { RegisterComponent } from './modules/pages/auth/register/register.component';
 import { AddServiceComponent } from './modules/pages/manager/salon-service/add-service/add-service.component';
 import { ListServiceComponent } from './modules/pages/manager/salon-service/list-service/list-service.component';
+import { AddEmployerComponent } from './modules/pages/manager/salon-gestion_personel/add-employer/add-employer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ListServiceComponent } from './modules/pages/manager/salon-service/list
     LayoutComponent,
     SidebarComponent,
     AddServiceComponent,
-    ListServiceComponent
+    ListServiceComponent,
+    AddEmployerComponent
   ],
   imports: [
     BrowserModule,
