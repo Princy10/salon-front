@@ -1,5 +1,5 @@
 {
-  "name": "m1p10mean-achille-hajaina",
+  "name": "m1p10mean-princy-nampiana",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -28,6 +28,7 @@
     "chart.js": "^4.3.2",
     "moment": "^2.29.4",
     "rxjs": "~7.8.0",
+    "socket.io-client": "^4.7.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SalonService } from 'src/app/modules/services/salon/salon.service';
 import { Router } from '@angular/router';
+import { io, Socket} from 'socket.io-client';
 
 @Component({
   selector: 'app-add-service',
   templateUrl: './add-service.component.html',
   styleUrls: ['./add-service.component.css']
 })
-export class AddServiceComponent {
+export class AddServiceComponent implements OnInit {
   //services: any[] = []
   serviceData = {
     titre: '',
@@ -15,14 +16,21 @@ export class AddServiceComponent {
     durer: 0,
     commission: 0
   };
+  socket!: Socket;
 
   constructor(
     private serciceSalon: SalonService,
     private router: Router) {}
 
+  ngOnInit(): void {
+    this.socket = io('http://localhost:3000');
+    this.socket.on('addService', () => {});
+  }
+
   ajout_service() {
     this.serciceSalon.createService(this.serviceData).subscribe(response => {
-      console.log('Insertion réussie', response);
+      // console.log('Insertion réussie', response);
+      this.socket.emit('addService');
       this.router.navigate(['/list-service']);
     }, error => {
       console.error('Erreur lors de l\'insertion', error);

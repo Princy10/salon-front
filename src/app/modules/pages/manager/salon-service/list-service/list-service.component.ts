@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SalonService } from 'src/app/modules/services/salon/salon.service';
+import { io, Socket} from 'socket.io-client';
 //import * as $ from 'jquery';
 
 @Component({
@@ -15,11 +16,20 @@ export class ListServiceComponent implements OnInit {
     "durer": "",
     "commission": ""
   }
+  socket!: Socket;
 
   constructor(private salonService: SalonService) { }
 
   ngOnInit(): void {
     this.getServices();
+    this.socket = io('http://localhost:3000');
+    this.socket.on('updateServiceById', () => {
+      this.getServices();
+    });
+
+    this.socket.on('deleteServiceById', () => {
+      this.getServices();
+    });
   }
 
   getServices(): void {
@@ -44,9 +54,8 @@ export class ListServiceComponent implements OnInit {
   updateServiceById(id_service: string) {
     // console.log("ao am update =>"+id_service);
     this.salonService.updateService(id_service, this.serviceById).subscribe(
-      (res) => {
-        // console.log("Service mis à jour avec succès :", res);
-        // logique: rehefa success reponse HTTP de tafiditra base izy zay de soloina anle input ny valeur ao HTML
+      () => {
+        this.socket.emit('updateServiceById');
         this.services.forEach((service, i) => {
           if (service._id === id_service) {
             this.services[i] = this.serviceById;
@@ -64,6 +73,7 @@ export class ListServiceComponent implements OnInit {
     this.salonService.deleteService(id_service).subscribe(
       (res) => {
         // console.log("Service supprimé avec succès :", res);
+        this.socket.emit('deleteServiceById');
         this.services = this.services.filter(service => service._id !== id_service);
       },
       (error) => {
