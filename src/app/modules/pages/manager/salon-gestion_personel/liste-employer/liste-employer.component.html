@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Liste Employer</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Code fonction</th>
+                            <th>Salaire</th>
+                            <th>Date debut</th>
+                            <th>Date fin</th>
+                            <th>heure de travail</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let employer of emploi; let i = index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ employer.id_individu.nom }} {{ employer.id_individu.prenom }}</td>
+                            <td>{{ employer.code_fonction }}</td>
+                            <td>{{ employer.salaire }} ar</td>
+                            <td>{{ employer.date_debut | date:'yyyy-MM-dd' }}</td>
+                            <td>{{ employer.date_fin | date:'yyyy-MM-dd'}}</td>
+                            <td>{{ employer.heure_travail }} min</td>
+                            <td>
+                                <button class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target="#serviceModal" (click)="getEmployerById(employer._id)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>  
+                            <td>
+                                <button class="btn btn-danger btn-circle btn-sm"  data-toggle="modal" data-target="#deleteModal" (click)="getEmployerById(employer._id)">
+                                  <i class="fas fa-trash"></i>
+                                </button>
+                              </td>                              
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal update service -->
+<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="employerById.code_fonction" name="code_fonction"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="employerById.salaire" name="salaire"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="employerById.date_debut"  name="date_debut"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example4" class="form-control form-control-lg" [(ngModel)]="employerById.date_fin" name="date_fin"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="employerById.heure_travail" name="heure_travail"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" data-dismiss="modal" (click)="updateEmployerById(employerById._id)" >Update</button>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<!-- Modal delete service -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-danger" data-dismiss="modal" (click)="deleteEmployerById(employerById._id)" >Delete</button>
+            </div>
+        </div>        
+    </div>
+</div>

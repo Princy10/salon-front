@@ -8,6 +8,7 @@ import { RegisterComponent } from './modules/pages/auth/register/register.compon
 import { ListServiceComponent } from './modules/pages/manager/salon-service/list-service/list-service.component';
 import { AddServiceComponent } from './modules/pages/manager/salon-service/add-service/add-service.component';
 import { AddEmployerComponent } from './modules/pages/manager/salon-gestion_personel/add-employer/add-employer.component';
+import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_personel/liste-employer/liste-employer.component';
 
 const routes: Routes = [
   // without layout
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'add-employer',
         component: AddEmployerComponent,
+      },
+      {
+        path: 'list-employer',
+        component: ListeEmployerComponent,
       },
     ],
   },
