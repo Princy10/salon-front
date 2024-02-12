@@ -77,6 +77,10 @@ export class ListeEmployerComponent {
       );
     }  
 
+    formatNumberWithSpaces(num: Number): string {
+      return num.toLocaleString('fr-FR');
+    }
+
 
 
 }
