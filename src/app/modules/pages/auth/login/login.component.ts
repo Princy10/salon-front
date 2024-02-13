@@ -19,6 +19,7 @@ export class LoginComponent {
     this.userService.login(this.username, this.password).subscribe(
       (user) => {
         localStorage.setItem('token', user.token);
+        localStorage.setItem('id', user._id);
         console.log('login successful');
         
         this.router.navigate(['/home']);

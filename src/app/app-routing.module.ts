@@ -9,6 +9,7 @@ import { ListServiceComponent } from './modules/pages/manager/salon-service/list
 import { AddServiceComponent } from './modules/pages/manager/salon-service/add-service/add-service.component';
 import { AddEmployerComponent } from './modules/pages/manager/salon-gestion_personel/add-employer/add-employer.component';
 import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_personel/liste-employer/liste-employer.component';
+import { GestionProfilComponent } from './modules/pages/employer/gestion_profil/gestion-profil/gestion-profil.component';
 
 const routes: Routes = [
   // without layout
@@ -50,6 +51,10 @@ const routes: Routes = [
       {
         path: 'list-employer',
         component: ListeEmployerComponent,
+      },
+      {
+        path: 'gestion-profil',
+        component: GestionProfilComponent,
       },
     ],
   },

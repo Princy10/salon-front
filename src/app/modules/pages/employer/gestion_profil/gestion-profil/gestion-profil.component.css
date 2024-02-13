@@ -1,0 +1,5 @@
+.square-btn {
+    width: 50px; /* Vous pouvez ajuster cette valeur selon vos besoins */
+    height: 50px; /* Vous pouvez ajuster cette valeur selon vos besoins */
+    border-radius: 0; /* Assurez-vous que le bouton n'a pas de bord arrondi */
+}

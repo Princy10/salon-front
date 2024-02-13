@@ -15,6 +15,7 @@ import { AddServiceComponent } from './modules/pages/manager/salon-service/add-s
 import { ListServiceComponent } from './modules/pages/manager/salon-service/list-service/list-service.component';
 import { AddEmployerComponent } from './modules/pages/manager/salon-gestion_personel/add-employer/add-employer.component';
 import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_personel/liste-employer/liste-employer.component';
+import { GestionProfilComponent } from './modules/pages/employer/gestion_profil/gestion-profil/gestion-profil.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_pe
     AddServiceComponent,
     ListServiceComponent,
     AddEmployerComponent,
-    ListeEmployerComponent
+    ListeEmployerComponent,
+    GestionProfilComponent
   ],
   imports: [
     BrowserModule,
