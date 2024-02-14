@@ -41,4 +41,8 @@ export class UserService {
     };
     return this.http.post<any>(`${environments.BASE_URL}/auth/logout`, {}, httpOptions);
   }
+
+  getListEmployer(): Observable<any[]> {
+    return this.http.get<any[]>(`${environments.BASE_URL}/user/list/employer`);
+  }
 }

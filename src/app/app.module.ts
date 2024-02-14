@@ -15,7 +15,8 @@ import { AddServiceComponent } from './modules/pages/manager/salon-service/add-s
 import { ListServiceComponent } from './modules/pages/manager/salon-service/list-service/list-service.component';
 import { AddEmployerComponent } from './modules/pages/manager/salon-gestion_personel/add-employer/add-employer.component';
 import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_personel/liste-employer/liste-employer.component';
-import { GestionProfilComponent } from './modules/pages/employer/gestion_profil/gestion-profil/gestion-profil.component';
+import { PriseRdvComponent } from './modules/pages/client/prise-rdv/prise-rdv.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { GestionProfilComponent } from './modules/pages/employer/gestion_profil/
     ListServiceComponent,
     AddEmployerComponent,
     ListeEmployerComponent,
-    GestionProfilComponent
+    PriseRdvComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ import { GestionProfilComponent } from './modules/pages/employer/gestion_profil/
     ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent],

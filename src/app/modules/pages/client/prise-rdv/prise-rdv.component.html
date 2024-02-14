@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Prise de rendez-vous</h6>
+      </div>
+      <div class="card-body">
+        <div class="row" cdkDropListGroup>
+          <div class="col-lg-6">
+            <div class="card position-relative">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-dark">
+                    Les services
+                </h6>
+              </div>
+              <div class="card-body">
+                <div class="example-container">
+                  <div
+                    cdkDropList
+                    [cdkDropListData]="services"
+                    class="example-list"
+                    (cdkDropListDropped)="drop($event)"
+                  >
+                    <div
+                      class="example-box"
+                      *ngFor="let item of services"
+                      cdkDrag
+                    >
+                      {{ item.titre }} || {{ item.prix }}ar ||
+                      {{ item.durer }}mn
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card position-relative">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-dark">Votre choix de service</h6>
+              </div>
+              <div class="card-body">
+                <div class="example-container">
+                  <div
+                    cdkDropList
+                    [cdkDropListData]="listChoixServices"
+                    class="example-list"
+                    (cdkDropListDropped)="drop($event)"
+                  >
+                    <div
+                      class="example-box"
+                      *ngFor="let item of listChoixServices"
+                      cdkDrag
+                    >
+                      {{ item.titre }} || {{ item.prix }}ar ||
+                      {{ item.durer }}mn
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <div class="row">
+          <div class="col-md-4">
+            <select class="form-select" aria-label="Select Employer">
+              <option selected>Select Employer</option>
+              <option
+                *ngFor="let employer of listEmployer"
+                [value]="employer._id"
+              >
+                {{ employer.nom }} {{ employer.prenom }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <input
+              type="date"
+              id="form3Example3"
+              class="form-control form-control-lg"
+              name="date_heure"
+            />
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-3">
+            <button
+              class="btn btn-success"
+              data-toggle="modal"
+              data-target="#createRdv"
+            >
+              Valider <i class="fas fa-check"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="createRdv"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure ?</h5>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-success" data-dismiss="modal">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
