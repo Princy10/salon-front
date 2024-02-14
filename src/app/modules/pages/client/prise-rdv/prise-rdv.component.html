@@ -66,7 +66,7 @@
         <br />
         <div class="row">
           <div class="col-md-4">
-            <select class="form-select" aria-label="Select Employer">
+            <select class="form-select" aria-label="Select Employer" [(ngModel)]="selectedEmployerId">
               <option selected>Select Employer</option>
               <option
                 *ngFor="let employer of listEmployer"
@@ -76,15 +76,16 @@
               </option>
             </select>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <input
-              type="date"
+              type="datetime-local"
               id="form3Example3"
               class="form-control form-control-lg"
               name="date_heure"
+              [(ngModel)]="selectedDate" 
             />
           </div>
-          <div class="col-md-2"></div>
+          <div class="col-md-1"></div>
           <div class="col-md-3">
             <button
               class="btn btn-success"
@@ -126,7 +127,7 @@
         <button class="btn btn-secondary" type="button" data-dismiss="modal">
           Cancel
         </button>
-        <button class="btn btn-success" data-dismiss="modal">Valider</button>
+        <button class="btn btn-success" data-dismiss="modal" (click)="sendRdvAndServices()">Valider</button>
       </div>
     </div>
   </div>

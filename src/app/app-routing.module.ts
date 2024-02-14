@@ -10,6 +10,7 @@ import { AddServiceComponent } from './modules/pages/manager/salon-service/add-s
 import { AddEmployerComponent } from './modules/pages/manager/salon-gestion_personel/add-employer/add-employer.component';
 import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_personel/liste-employer/liste-employer.component';
 import { PriseRdvComponent } from './modules/pages/client/prise-rdv/prise-rdv.component';
+import { ListHistoriqueComponent } from './modules/pages/client/list-historique/list-historique.component';
 
 const routes: Routes = [
   // without layout
@@ -56,6 +57,10 @@ const routes: Routes = [
       {
         path: 'rdv',
         component: PriseRdvComponent,
+      },
+      {
+        path: 'historique',
+        component: ListHistoriqueComponent,
       },
     ],
   },
