@@ -18,6 +18,7 @@ import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_pe
 import { PriseRdvComponent } from './modules/pages/client/prise-rdv/prise-rdv.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ListHistoriqueComponent } from './modules/pages/client/list-historique/list-historique.component';
+import { ProfileComponent } from './modules/pages/public/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ListHistoriqueComponent } from './modules/pages/client/list-historique/
     AddEmployerComponent,
     ListeEmployerComponent,
     PriseRdvComponent,
-    ListHistoriqueComponent
+    ListHistoriqueComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { AddEmployerComponent } from './modules/pages/manager/salon-gestion_pers
 import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_personel/liste-employer/liste-employer.component';
 import { PriseRdvComponent } from './modules/pages/client/prise-rdv/prise-rdv.component';
 import { ListHistoriqueComponent } from './modules/pages/client/list-historique/list-historique.component';
+import { ProfileComponent } from './modules/pages/public/profile/profile.component';
 
 const routes: Routes = [
   // without layout
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
       {
         path: 'list-service',

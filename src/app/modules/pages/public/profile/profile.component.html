@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Gestion Profile</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="form-outline mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" [(ngModel)]="user.nom" id="form3Example3" class="form-control form-control-lg" name="nom"/>
+                            <label class="form-label" for="form3Example3">Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" [(ngModel)]="user.prenom" id="form3Example4" class="form-control form-control-lg" name="prenom"/>
+                            <label class="form-label" for="form3Example4">Lastname</label>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" [(ngModel)]="user.username" id="form3Example3" class="form-control form-control-lg" name="username"/>
+                            <label class="form-label" for="form3Example3">Username</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" [(ngModel)]="user.password" id="form3Example4" class="form-control form-control-lg" name="password"/>
+                            <label class="form-label" for="form3Example4">Password</label>
+                        </div>
+                    </div>
+    
+                    <input type="mail" id="form3Example4" [(ngModel)]="user.mail" class="form-control form-control-lg" placeholder="email@example.com" name="mail"/>
+                    <label class="form-label" for="form3Example4">Email</label>
+    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="date" id="form3Example3" [(ngModel)]="user.date_naissance" class="form-control form-control-lg" name="date_naissance"/>
+                            <label class="form-label" for="form3Example3">Date of birth</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="numer" id="form3Example4" [(ngModel)]="user.cin" class="form-control form-control-lg" placeholder="1234567890123" name="cin"/>
+                            <label class="form-label" for="form3Example4">CIN</label>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="form3Example3" [(ngModel)]="user.adresse" class="form-control form-control-lg" placeholder="Adresse" name="adresse"/>
+                            <label class="form-label" for="form3Example3">Adresse</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" id="form3Example4" [(ngModel)]="user.contact" class="form-control form-control-lg" placeholder="0341234567" name="contact"/>
+                            <label class="form-label" for="form3Example4">Contact</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
