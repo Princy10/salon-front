@@ -45,4 +45,8 @@ export class UserService {
   getListEmployer(): Observable<any[]> {
     return this.http.get<any[]>(`${environments.BASE_URL}/user/list/employer`);
   }
+
+  updateUser(userData: any): Observable<any> {
+    return this.http.put<any[]>(`${environments.BASE_URL}/user/update`, userData);
+  }
 }
