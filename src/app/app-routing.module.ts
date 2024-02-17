@@ -12,6 +12,7 @@ import { ListeEmployerComponent } from './modules/pages/manager/salon-gestion_pe
 import { PriseRdvComponent } from './modules/pages/client/prise-rdv/prise-rdv.component';
 import { ListHistoriqueComponent } from './modules/pages/client/list-historique/list-historique.component';
 import { ProfileComponent } from './modules/pages/public/profile/profile.component';
+import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-emplyer.component';
 
 const routes: Routes = [
   // without layout
@@ -66,6 +67,10 @@ const routes: Routes = [
       {
         path: 'historique',
         component: ListHistoriqueComponent,
+      },
+      {
+        path: 'rdv-employer',
+        component: RdvEmplyerComponent,
       },
     ],
   },

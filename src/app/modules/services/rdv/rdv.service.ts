@@ -13,4 +13,20 @@ export class RdvService {
   insererRdvEtServices(rdvData: any): Observable<any> {
     return this.http.post<any>(`${environments.BASE_URL}/prise_rdv/create`, rdvData);
   }
+
+  getRdvEmployerById(id: string): Observable<any> {
+    return this.http.get(`${environments.BASE_URL}/prise_rdv/list/${id}`);
+  }
+
+  getRdvById(id: string): Observable<any> {
+    return this.http.get(`${environments.BASE_URL}/prise_rdv/listRdvById/${id}`);
+  }
+
+  updateEtatRdvValider(id: string): Observable<any> {
+    return this.http.put<any>(`${environments.BASE_URL}/prise_rdv/update_valider/${id}`, {});
+  }
+
+  updateEtatRdvRefuser(id: string): Observable<any> {
+    return this.http.put<any>(`${environments.BASE_URL}/prise_rdv/update_refuser/${id}`, {});
+  }
 }

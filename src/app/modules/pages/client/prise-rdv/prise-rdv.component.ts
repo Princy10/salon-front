@@ -77,7 +77,7 @@ export class PriseRdvComponent implements OnInit {
 
     if (currentUserString) {
       const currentUser = JSON.parse(currentUserString);
-      const userId = currentUser._id;
+      const userId = currentUser;
 
       const idIndividuEmpl = this.selectedEmployerId;
       const dateHeure = this.selectedDate;
@@ -85,7 +85,7 @@ export class PriseRdvComponent implements OnInit {
       const services = this.listChoixServices.map((service) => service._id);
 
       const rdvData = {
-        id_individu_client: userId,
+        id_individu_client: userId.individu._id,
         id_individu_empl: idIndividuEmpl,
         date_heure: dateHeure,
         etat: etat,

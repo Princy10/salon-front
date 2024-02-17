@@ -19,6 +19,8 @@ import { PriseRdvComponent } from './modules/pages/client/prise-rdv/prise-rdv.co
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ListHistoriqueComponent } from './modules/pages/client/list-historique/list-historique.component';
 import { ProfileComponent } from './modules/pages/public/profile/profile.component';
+import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-emplyer.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { ProfileComponent } from './modules/pages/public/profile/profile.compone
     ListeEmployerComponent,
     PriseRdvComponent,
     ListHistoriqueComponent,
-    ProfileComponent
+    ProfileComponent,
+    RdvEmplyerComponent
   ],
   imports: [
     BrowserModule,
