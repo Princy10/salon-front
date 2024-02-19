@@ -37,7 +37,7 @@ import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-em
     PriseRdvComponent,
     ListHistoriqueComponent,
     ProfileComponent,
-    RdvEmplyerComponent
+    RdvEmplyerComponent,
   ],
   imports: [
     BrowserModule,

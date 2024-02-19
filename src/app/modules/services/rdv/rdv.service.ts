@@ -29,4 +29,13 @@ export class RdvService {
   updateEtatRdvRefuser(id: string): Observable<any> {
     return this.http.put<any>(`${environments.BASE_URL}/prise_rdv/update_refuser/${id}`, {});
   }
+
+  //client
+  getRdvClientById(id: string): Observable<any> {
+    return this.http.get(`${environments.BASE_URL}/prise_rdv/listRdv_client/${id}`);
+  }
+
+  updateEtatRdvAnnuler(id: string): Observable<any> {
+    return this.http.put<any>(`${environments.BASE_URL}/prise_rdv/update_annuler/${id}`, {});
+  }
 }
