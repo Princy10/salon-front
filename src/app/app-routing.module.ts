@@ -65,7 +65,7 @@ const routes: Routes = [
         component: PriseRdvComponent,
       },
       {
-        path: 'historique',
+        path: 'list-rdv',
         component: ListHistoriqueComponent,
       },
       {

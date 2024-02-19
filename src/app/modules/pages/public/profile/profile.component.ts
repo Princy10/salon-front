@@ -44,6 +44,22 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(data).subscribe(
       (response) => {
         console.log(response);
+        const currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+          const userData = JSON.parse(currentUser);
+          userData.username = data.username;
+          userData.individu = {
+            ...userData.individu,
+            nom: data.nom,
+            prenom: data.prenom,
+            mail: data.mail,
+            date_naissance: data.date_naissance,
+            cin: data.cin,
+            adresse: data.adresse,
+            contact: data.contact
+          };
+          localStorage.setItem("currentUser", JSON.stringify(userData));
+        }
       },
       (error) => {
         console.error(error);

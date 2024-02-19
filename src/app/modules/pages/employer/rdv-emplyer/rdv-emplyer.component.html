@@ -1,88 +1,216 @@
 <div class="row">
-    <div class="col-md-12 mb-4">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Liste Rendez-vous</h6>
-            </div>
+  <div class="col-md-12 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste Rendez-vous</h6>
+      </div>
 
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Client</th>
-                            <th>Employer</th>
-                            <th>Date et heure</th>
-                            <th>Etat</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let rdv of rdvByidEmployer; let i = index">
-                            <td>{{ i+1 }}</td>
-                            <td>{{ rdv.id_individu_client.nom }} {{ rdv.id_individu_client.prenom }}</td>
-                            <td>{{ rdv.id_individu_empl.nom }} {{ rdv.id_individu_empl.prenom }}</td>
-                            <td>{{ rdv.date_heure }}</td>
-                            <td>{{ rdv.etat }}</td>
-                            <td>
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#updateModal" (click)="getRdvById(rdv._id)">
-                                            Détails <i class="fas fa-edit"></i>
-                                          </button>
-                            </td>                               
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-            </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Date et heure</th>
+                <th>Etat</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let rdv of rdvByidEmployer; let i = index">
+                <ng-container *ngIf="rdv.etat === 'Planifié'">
+                  <tr>
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                      {{ rdv.id_individu_client.nom }}
+                      {{ rdv.id_individu_client.prenom }}
+                    </td>
+                    <td>{{ rdv.date_heure }}</td>
+                    <td>{{ rdv.etat }}</td>
+                    <td>
+                      <button
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#updateModal"
+                        (click)="getRdvById(rdv._id)"
+                      >
+                        Détails <i class="fas fa-edit"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Détail du rendez-vous</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                        <p>Client: {{ rdvByid?.id_individu_client.nom }} {{ rdvByid?.id_individu_client.prenom }}</p>
-                        <p>Employé: {{ rdvByid?.id_individu_empl.nom }} {{ rdvByid?.id_individu_empl.prenom }}</p>
-                        <p>Date et heure: {{ rdvByid?.date_heure }}</p>
-                        <p>État: {{ rdvByid?.etat }}</p>
-                        <p>Services:</p>
-                        <ul>
-                          <li *ngFor="let service of rdvByid?.services">
-                            {{ service.titre }} - {{ service.prix }} Ar
-                          </li>
-                        </ul>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal" (click)="updateEtatRdvRefuser(rdvByid._id)">Réfuser</button>
-                    <button class="btn btn-primary" data-dismiss="modal"  (click)="updateEtatRdvValider(rdvByid._id)">Valider</button>
-                </div>
-            </div>        
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Historique</h6>
+      </div>
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Client</th>
+                <th>Date et heure</th>
+                <th>Etat</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let rdv of rdvByidEmployer; let i = index">
+                <ng-container *ngIf="rdv.etat !== 'Planifié'">
+                  <tr>
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                      {{ rdv.id_individu_client.nom }}
+                      {{ rdv.id_individu_client.prenom }}
+                    </td>
+                    <td>{{ rdv.date_heure }}</td>
+                    <td>{{ rdv.etat }}</td>
+                    <td>
+                      <button
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#detailModal"
+                        (click)="getRdvById(rdv._id)"
+                      >
+                        Détails <i class="fas fa-edit"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
+</div>
 
-<!-- Modal delete service 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete ?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" data-dismiss="modal" (click)="deleteEmployerById(employerById._id)" >Delete</button>
-            </div>
-        </div>        
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Détail du rendez-vous
+        </h5>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Client: {{ rdvByid?.id_individu_client.nom }}
+          {{ rdvByid?.id_individu_client.prenom }}
+        </p>
+        <p>
+          Employé: {{ rdvByid?.id_individu_empl.nom }}
+          {{ rdvByid?.id_individu_empl.prenom }}
+        </p>
+        <p>État: {{ rdvByid?.etat }}</p>
+        <p>Services:</p>
+        <ul>
+          <li *ngFor="let service of rdvByid?.services">
+            {{ service.titre }} - {{ service.prix }} Ar - {{ service.durer }}mn
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-secondary"
+          type="button"
+          data-dismiss="modal"
+          (click)="updateEtatRdvRefuser(rdvByid._id)"
+        >
+          Réfuser
+        </button>
+        <button
+          class="btn btn-primary"
+          data-dismiss="modal"
+          (click)="updateEtatRdvValider(rdvByid._id)"
+        >
+          Valider
+        </button>
+      </div>
     </div>
-</div>-->
+  </div>
+</div>
 
+<div
+  class="modal fade"
+  id="detailModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Détail du rendez-vous
+        </h5>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Client: {{ rdvByid?.id_individu_client.nom }}
+          {{ rdvByid?.id_individu_client.prenom }}
+        </p>
+        <p>
+          Employé: {{ rdvByid?.id_individu_empl.nom }}
+          {{ rdvByid?.id_individu_empl.prenom }}
+        </p>
+        <p>État: {{ rdvByid?.etat }}</p>
+        <p>Services:</p>
+        <ul>
+          <li *ngFor="let service of rdvByid?.services">
+            {{ service.titre }} - {{ service.prix }} Ar - {{ service.durer }}mn
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
