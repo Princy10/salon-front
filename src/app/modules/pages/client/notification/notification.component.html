@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow-lg rounded-lg">
+            <div class="card-header bg-gradient-primary text-white">
+                <h5 class="m-0 font-weight-bold">Notification</h5>
+            </div>
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">{{ notifById.id_offre.titre }}</h2>
+                <p class="card-text">{{ notifById.id_offre.description }}</p>
+                <hr>
+                <p class="card-text"><strong>Service:</strong> {{ notifById.id_offre.id_service.titre }}</p>
+                <p class="card-text"><strong>Date de début:</strong> {{ notifById.id_offre.date_debut | date:'mediumDate' }}</p>
+                <p class="card-text"><strong>Date de fin:</strong> {{ notifById.id_offre.date_fin | date:'mediumDate' }}</p>
+                <p class="card-text"><strong>Prix:</strong> {{ notifById.id_offre.prix }} Ar</p>
+              </div>
+        </div>
+    </div>
+</div>

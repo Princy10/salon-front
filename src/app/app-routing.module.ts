@@ -13,6 +13,8 @@ import { PriseRdvComponent } from './modules/pages/client/prise-rdv/prise-rdv.co
 import { ListHistoriqueComponent } from './modules/pages/client/list-historique/list-historique.component';
 import { ProfileComponent } from './modules/pages/public/profile/profile.component';
 import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-emplyer.component';
+import { AddOffreComponent } from './modules/pages/manager/salon-offre_speciale/add-offre/add-offre.component';
+import { NotificationComponent } from './modules/pages/client/notification/notification.component';
 
 const routes: Routes = [
   // without layout
@@ -71,6 +73,14 @@ const routes: Routes = [
       {
         path: 'rdv-employer',
         component: RdvEmplyerComponent,
+      },
+      {
+        path: 'add-offre',
+        component: AddOffreComponent,
+      },
+      {
+        path: 'notification-detail/:id',
+        component: NotificationComponent,
       },
     ],
   },

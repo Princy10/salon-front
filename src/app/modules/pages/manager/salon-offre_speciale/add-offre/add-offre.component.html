@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Gestion Profile</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="form-outline mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-outline mb-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <select class="form-select" aria-label="Select Offre" [(ngModel)]="offreData.id_service">
+                                          <option selected>Select Service</option>
+                                          <option *ngFor="let srvc of services"
+                                          [value]="srvc._id">
+                                          {{ srvc.titre }}
+                                        </option>
+                                        </select>
+                                        <label class="form-label" for="form3Example4">Services</label>
+                                      </div>
+                                </div>
+                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="datetime-local"  class="form-control form-control-lg" [(ngModel)]="offreData.date_debut" name="date_debut"/>
+                                        <label class="form-label" for="form3Example3">Date début</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="datetime-local"  class="form-control form-control-lg" [(ngModel)]="offreData.date_fin" name="date_fin"/>
+                                        <label class="form-label" for="form3Example3">Date fin</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text"  class="form-control form-control-lg" [(ngModel)]="offreData.prix" name="prix" placeholder="10000ar"/>
+                                    <label class="form-label" for="form3Example3">Prix</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text"  class="form-control form-control-lg" [(ngModel)]="offreData.titre" name="titre" placeholder="Offre spéciale coiffure"/>
+                                    <label class="form-label" for="form3Example3">Titre</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="offreData.description" rows="3"></textarea>
+                                    <label class="form-label" for="form3Example3">Description</label>
+                                </div>
+                            </div>
+                            <br><br><br>
+                            <div class="row">
+                                <div class="col-md-8"></div>
+                                <div class="col-md-4">
+                                    <button
+                                      class="btn btn-success"
+                                      data-toggle="modal"
+                                      data-target="#createRdv"
+                                    >
+                                      Valider <i class="fas fa-check"></i>
+                                    </button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="createRdv"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure ?</h5>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-success" data-dismiss="modal" (click)="ajout_offre()">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>

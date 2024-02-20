@@ -20,6 +20,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ListHistoriqueComponent } from './modules/pages/client/list-historique/list-historique.component';
 import { ProfileComponent } from './modules/pages/public/profile/profile.component';
 import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-emplyer.component';
+import { AddOffreComponent } from './modules/pages/manager/salon-offre_speciale/add-offre/add-offre.component';
+import { NotificationComponent } from './modules/pages/client/notification/notification.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-em
     ListHistoriqueComponent,
     ProfileComponent,
     RdvEmplyerComponent,
+    AddOffreComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
