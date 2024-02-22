@@ -22,7 +22,8 @@ import { ProfileComponent } from './modules/pages/public/profile/profile.compone
 import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-emplyer.component';
 import { AddOffreComponent } from './modules/pages/manager/salon-offre_speciale/add-offre/add-offre.component';
 import { NotificationComponent } from './modules/pages/client/notification/notification.component';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { NotificationComponent } from './modules/pages/client/notification/notif
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

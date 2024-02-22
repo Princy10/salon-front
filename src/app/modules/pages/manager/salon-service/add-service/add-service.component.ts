@@ -14,7 +14,8 @@ export class AddServiceComponent implements OnInit {
     titre: '',
     prix: 0,
     durer: 0,
-    commission: 0
+    commission: 0,
+    imageURL: ''
   };
   socket!: Socket;
 
@@ -37,4 +38,27 @@ export class AddServiceComponent implements OnInit {
     });
   }
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+        this.uploadImage(file);
+    }
+  }
+
+  uploadImage(file: File) {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    this.serciceSalon.uploadImage(formData).subscribe(
+      (response) => {
+        console.log("Image téléchargée avec succès : ", response);
+        console.log("bla bla",response.imageName);
+        
+        this.serviceData.imageURL = response.imageName;
+      },
+      (error) => {
+        console.error("Erreur lors du téléchargement de l'image : ", error);
+      }
+    );
+  }
 }
