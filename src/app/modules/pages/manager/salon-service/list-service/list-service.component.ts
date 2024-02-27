@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SalonService } from "src/app/modules/services/salon/salon.service";
 import { io, Socket } from "socket.io-client";
-//import * as $ from 'jquery';
 
 @Component({
   selector: "app-list-service",
@@ -19,7 +18,7 @@ export class ListServiceComponent implements OnInit {
   socket!: Socket;
 
   currentPage = 1;
-  itemsPerPage = 3;
+  itemsPerPage = 5;
   filterString = "";
 
   constructor(private salonService: SalonService) {}

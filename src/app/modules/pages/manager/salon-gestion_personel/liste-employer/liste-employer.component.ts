@@ -20,8 +20,8 @@ export class ListeEmployerComponent {
   socket!: Socket;
 
   currentPage = 1;
-  itemsPerPage = 3;
-  filterName: string = "";
+  itemsPerPage = 5;
+  filterString = "";
 
   constructor(private gestionPersonelService: GestionPersonelService) { }
 
@@ -49,16 +49,16 @@ export class ListeEmployerComponent {
     );
   }
 
-  getFilteredEmployments(): any[] {
-    return this.emploi.filter((employeur) =>
-      (employeur.id_individu.nom.toLowerCase().includes(this.filterName.toLowerCase()) ||
-      employeur.id_individu.prenom.toLowerCase().includes(this.filterName.toLowerCase()))
+  getFilteredEmployees(): any[] {
+    return this.emploi.filter((emploi) =>
+      emploi.id_individu.nom.toLowerCase().includes(this.filterString.toLowerCase()) ||
+      emploi.id_individu.prenom.toString().toLowerCase().includes(this.filterString.toLowerCase())
     );
   }
 
-  getPaginatedEmploymentData(): any[] {
+  getPaginatedEmployees(): any[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    return this.getFilteredEmployments().slice(
+    return this.getFilteredEmployees().slice(
       startIndex,
       startIndex + this.itemsPerPage
     );

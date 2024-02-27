@@ -38,4 +38,13 @@ export class RdvService {
   updateEtatRdvAnnuler(id: string): Observable<any> {
     return this.http.put<any>(`${environments.BASE_URL}/prise_rdv/update_annuler/${id}`, {});
   }
+
+  insererPreferenceRdv(rdvData: any): Observable<any> {
+    return this.http.post<any>(`${environments.BASE_URL}/prise_rdv/createPreference`, rdvData);
+  }
+
+  //paiement
+  inserertraitement(id: string): Observable<any> {
+    return this.http.post<any>(`${environments.BASE_URL}/traitement/create/${id}`, {});
+  }
 }

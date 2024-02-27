@@ -62,4 +62,8 @@ export class SidebarComponent implements OnInit {
       this.router.navigate(['/notification-detail', this.notifById._id]);
     })
   }
+
+  resetNotificationCounter() {
+    this.notif.length = 0;
+  }
 }

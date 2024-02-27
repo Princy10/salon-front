@@ -7,65 +7,70 @@
       <div class="card-body">
         <div class="row" cdkDropListGroup>
           <div class="col-lg-6">
-            <div class="card position-relative">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">
-                    Les services
+            <div class="card">
+              <div class="card-header text-dark">
+                <h6 class="m-0 font-weight-bold">
+                  Les services
                 </h6>
               </div>
               <div class="card-body">
-                <div class="example-container">
-                  <div
-                    cdkDropList
-                    [cdkDropListData]="services"
-                    class="example-list"
-                    (cdkDropListDropped)="drop($event)"
-                  >
-                    <div
-                      class="example-box"
-                      *ngFor="let item of services"
-                      cdkDrag
-                    >
-                      {{ item.titre }} || {{ item.prix }}ar ||
-                      {{ item.durer }}mn
-                    </div>
-                  </div>
+                <div cdkDropList [cdkDropListData]="services" class="example-list" (cdkDropListDropped)="drop($event)">
+                  <table class="table table-bordered">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Titre</th>
+                        <th>Prix</th>
+                        <th>Durée</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of services" cdkDrag>
+                        <td>{{ item.titre }}</td>
+                        <td>{{ item.prix }} ar</td>
+                        <td>{{ item.durer }} mn</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
-
+        
           <div class="col-lg-6">
-            <div class="card position-relative">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-dark">Votre choix de service</h6>
+            <div class="card">
+              <div class="card-header text-dark">
+                <h6 class="m-0 font-weight-bold">Votre choix de service</h6>
               </div>
               <div class="card-body">
-                <div class="example-container">
-                  <div
-                    cdkDropList
-                    [cdkDropListData]="listChoixServices"
-                    class="example-list"
-                    (cdkDropListDropped)="drop($event)"
-                  >
-                    <div
-                      class="example-box"
-                      *ngFor="let item of listChoixServices"
-                      cdkDrag
-                    >
-                      {{ item.titre }} || {{ item.prix }}ar ||
-                      {{ item.durer }}mn
-                    </div>
-                  </div>
+                <div cdkDropList [cdkDropListData]="listChoixServices" class="example-list" (cdkDropListDropped)="drop($event)">
+                  <table class="table table-bordered">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Titre</th>
+                        <th>Prix</th>
+                        <th>Durée</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of listChoixServices" cdkDrag>
+                        <td>{{ item.titre }}</td>
+                        <td>{{ item.prix }} ar</td>
+                        <td>{{ item.durer }} mn</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
+        
 
         <br />
         <div class="row">
           <div class="col-md-4">
+            <label for="inputEmail4">Selection employer:</label>
             <select class="form-select" aria-label="Select Employer" [(ngModel)]="selectedEmployerId">
               <option selected>Select Employer</option>
               <option
@@ -77,6 +82,7 @@
             </select>
           </div>
           <div class="col-md-4">
+            <label for="form3Example3">Date et heure:</label>
             <input
               type="datetime-local"
               id="form3Example3"
@@ -132,3 +138,85 @@
     </div>
   </div>
 </div>
+
+
+<!--<div class="row">
+  <div class="col-md-12 mb-4">
+    <div class="card shadow-lg rounded-lg">
+      <div class="card-header bg-gradient-primary text-white">
+        <h5 class="m-0 font-weight-bold">Vos préférences</h5>
+      </div>
+      <div class="card-body">
+        <h6 class="font-weight-bold">Préférences des employés :</h6>
+        <ul class="list-group">
+          <ng-container *ngFor="let preference of preferencesData.preferences">
+            <li class="list-group-item">
+              {{ preference.id_employer.nom }} {{ preference.id_employer.prenom }}
+            </li>
+          </ng-container>
+        </ul>
+        <h6 class="font-weight-bold mt-4">Préférences des services :</h6>
+        <ul class="list-group">
+          <ng-container *ngFor="let preferenceService of preferencesData.preferencesService">
+            <li class="list-group-item">
+              {{ preferenceService.id_service.titre }} - {{ preferenceService.id_service.prix }} Ar
+            </li>
+          </ng-container>
+        </ul>
+        <div class="mt-4">
+          <label for="form3Example3" class="form-label">Sélectionner une date et une heure :</label>
+          <input
+            type="datetime-local"
+            id="form3Example3"
+            class="form-control"
+            name="date_heure"
+            [(ngModel)]="selectedDatePref"
+          />
+        </div>
+        <button class="btn btn-primary mt-4" (click)="ajoutPreferenceRdv()">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <div class="card shadow-lg rounded-lg">
+      <div class="card-header bg-gradient-primary text-white">
+        <h5 class="m-0 font-weight-bold">Vos préférences</h5>
+      </div>
+      <div class="card-body">
+        <h6 class="font-weight-bold">Préférences des employés :</h6>
+        <ul class="list-group">
+          <li class="list-group-item">
+            {{ preferencesData.preferences[preferencesData.preferences.length - 1].id_employer.nom }}
+            {{ preferencesData.preferences[preferencesData.preferences.length - 1].id_employer.prenom }}
+          </li>
+        </ul>
+        <h6 class="font-weight-bold mt-4">Préférences des services :</h6>
+        <ul class="list-group">
+          <li class="list-group-item">
+            {{ preferencesData.preferencesService[preferencesData.preferencesService.length - 1].id_service.titre }}
+            - {{ preferencesData.preferencesService[preferencesData.preferencesService.length - 1].id_service.prix }} Ar
+          </li>
+        </ul>
+        <div class="mt-4">
+          <label for="form3Example3" class="form-label">Sélectionner une date et une heure :</label>
+          <input
+            type="datetime-local"
+            id="form3Example3"
+            class="form-control"
+            name="date_heure"
+            [(ngModel)]="selectedDatePref"
+          />
+        </div>
+        <button class="btn btn-primary mt-4" (click)="ajoutPreferenceRdv()">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  

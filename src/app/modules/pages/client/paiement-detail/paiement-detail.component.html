@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg rounded-lg">
+            <div class="card-header bg-gradient-primary text-white">
+                <h5 class="m-0 font-weight-bold">Paiement</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <p><strong>Client:</strong> {{ paiement.id_individu_client.nom }} {{ paiement.id_individu_client.prenom }}</p>
+                        <p><strong>Employé:</strong> {{ paiement.id_individu_empl.nom }} {{ paiement.id_individu_empl.prenom }}</p>
+                        <strong>Services:</strong>
+                        <ul class="list-group mt-3">
+                            <li class="list-group-item" *ngFor="let service of paiement.services; let i = index">
+                                <p class="mb-1"><strong>{{ service.titre }}</strong></p>
+                                <ng-container *ngIf="i === 0 && paiement.offreSpecialePrix !== 0 && paiement.offreSpecialePrix !== null">
+                                    <p class="mb-0">Prix spécial: {{ paiement.offreSpecialePrix }} Ar</p>
+                                </ng-container>
+                                <ng-container *ngIf="i === 0 && (paiement.offreSpecialePrix === 0 || paiement.offreSpecialePrix === null)">
+                                    <p class="mb-0">Prix: {{ service.prix }} Ar</p>
+                                </ng-container>
+                                <ng-container *ngIf="i !== 0">
+                                    <p class="mb-0">Prix: {{ service.prix }} Ar</p>
+                                </ng-container>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <p><strong>Prix total:</strong> {{ paiement.totalPrix }} Ar</p>
+                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#validationModal">
+                            Valider le paiement
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="messageErreur" class="alert alert-danger mt-3">{{ messageErreur }}</div>
+                <div *ngIf="messageSucces" class="alert alert-success mt-3">{{ messageSucces }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal de validation -->
+<div class="modal fade" id="validationModal" tabindex="-1" role="dialog" aria-labelledby="validationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="validationModalLabel">Validation du paiement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sûr de vouloir valider ce paiement ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" (click)="effectuerPaiement(paiement.id_individu_client._id,paiement.totalPrix)">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>
+

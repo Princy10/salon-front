@@ -1,0 +1,113 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Liste Offre Spéciale</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="row">
+                        <!-- Filtrage -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Filtrer par service, titre, prix" [(ngModel)]="filterString">
+                            </div>
+                        </div>                        
+                    </div>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Service Offre spéciale</th>
+                            <th>Titre Offre Spéciale</th>
+                            <th>Date début</th>
+                            <th>Date fin</th>
+                            <th>prix</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let off of getPaginatedOffres(); let i = index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ off.id_service.titre }}</td>
+                            <td>{{ off.titre }} </td>
+                            <td>{{ off.date_debut }}</td>
+                            <td>{{ off.date_fin }}</td>
+                            <td>{{ off.prix }} Ar</td>
+                            <td>
+                                <button class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target="#serviceModal" (click)="getOffreById(off._id)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>  
+                            <td>
+                                <button class="btn btn-danger btn-circle btn-sm"  data-toggle="modal" data-target="#deleteModal" (click)="getOffreById(off._id)">
+                                  <i class="fas fa-trash"></i>
+                                </button>
+                              </td>                              
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- Pagination -->
+                    <pagination [totalItems]="getFilteredOffres().length" [(ngModel)]="currentPage" [maxSize]="5" class="pagination-sm" [itemsPerPage]="itemsPerPage"></pagination>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal update service -->
+<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="offreById.titre" name="titre"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="offreById.prix" name="prix"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" id="form3Example3" class="form-control form-control-lg" [(ngModel)]="offreById.date_debut"  name="date_debut"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" id="form3Example4" class="form-control form-control-lg" [(ngModel)]="offreById.date_fin" name="date_fin"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" data-dismiss="modal" (click)="updateOffreById(offreById._id)" >Update</button>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<!-- Modal delete service -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-danger" data-dismiss="modal" (click)="deleteOffreById(offreById._id)" >Delete</button>
+            </div>
+        </div>        
+    </div>
+</div>
+
+

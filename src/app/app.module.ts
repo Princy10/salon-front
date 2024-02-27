@@ -22,8 +22,18 @@ import { ProfileComponent } from './modules/pages/public/profile/profile.compone
 import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-emplyer.component';
 import { AddOffreComponent } from './modules/pages/manager/salon-offre_speciale/add-offre/add-offre.component';
 import { NotificationComponent } from './modules/pages/client/notification/notification.component';
+import { RechargementComponent } from './modules/pages/client/rechargement/rechargement.component';
+import { AddDepenseComponent } from './modules/pages/manager/salon-journal_caisse/add-depense/add-depense.component';
+import { ListJournalCaisseComponent } from './modules/pages/manager/salon-journal_caisse/list-journal-caisse/list-journal-caisse.component';
+import { PaiementSalaireComponent } from './modules/pages/manager/salon-paiement_salaire/paiement-salaire/paiement-salaire.component';
+import { PaiementDetailComponent } from './modules/pages/client/paiement-detail/paiement-detail.component';
+import { ListOffreComponent } from './modules/pages/manager/salon-offre_speciale/list-offre/list-offre.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ReservationComponent } from './modules/pages/manager/statistique/reservation/reservation.component';
+import { ChiffreAffaireComponent } from './modules/pages/manager/statistique/chiffre-affaire/chiffre-affaire.component';
+import { BeneficeComponent } from './modules/pages/manager/statistique/benefice/benefice.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +53,15 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     RdvEmplyerComponent,
     AddOffreComponent,
     NotificationComponent,
+    RechargementComponent,
+    AddDepenseComponent,
+    ListJournalCaisseComponent,
+    PaiementSalaireComponent,
+    PaiementDetailComponent,
+    ListOffreComponent,
+    ReservationComponent,
+    ChiffreAffaireComponent,
+    BeneficeComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +73,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     DragDropModule,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
+    CarouselModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

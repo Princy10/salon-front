@@ -15,6 +15,15 @@ import { ProfileComponent } from './modules/pages/public/profile/profile.compone
 import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-emplyer.component';
 import { AddOffreComponent } from './modules/pages/manager/salon-offre_speciale/add-offre/add-offre.component';
 import { NotificationComponent } from './modules/pages/client/notification/notification.component';
+import { RechargementComponent } from './modules/pages/client/rechargement/rechargement.component';
+import { AddDepenseComponent } from './modules/pages/manager/salon-journal_caisse/add-depense/add-depense.component';
+import { ListJournalCaisseComponent } from './modules/pages/manager/salon-journal_caisse/list-journal-caisse/list-journal-caisse.component';
+import { PaiementSalaireComponent } from './modules/pages/manager/salon-paiement_salaire/paiement-salaire/paiement-salaire.component';
+import { PaiementDetailComponent } from './modules/pages/client/paiement-detail/paiement-detail.component';
+import { ListOffreComponent } from './modules/pages/manager/salon-offre_speciale/list-offre/list-offre.component';
+import { ChiffreAffaireComponent } from './modules/pages/manager/statistique/chiffre-affaire/chiffre-affaire.component';
+import { ReservationComponent } from './modules/pages/manager/statistique/reservation/reservation.component';
+import { BeneficeComponent } from './modules/pages/manager/statistique/benefice/benefice.component';
 
 const routes: Routes = [
   // without layout
@@ -79,8 +88,44 @@ const routes: Routes = [
         component: AddOffreComponent,
       },
       {
+        path: 'list-offre',
+        component: ListOffreComponent,
+      },
+      {
         path: 'notification-detail/:id',
         component: NotificationComponent,
+      },
+      {
+        path: 'rechargement',
+        component: RechargementComponent,
+      },
+      {
+        path: 'add-depense',
+        component: AddDepenseComponent,
+      },
+      {
+        path: 'list-journal',
+        component: ListJournalCaisseComponent,
+      },
+      {
+        path: 'paiement-salaire',
+        component: PaiementSalaireComponent,
+      },
+      {
+        path: 'paiement-detail/:id',
+        component: PaiementDetailComponent,
+      },
+      {
+        path: 'stat/reservation',
+        component: ReservationComponent,
+      },
+      {
+        path: 'stat/chiffre-affaire',
+        component: ChiffreAffaireComponent,
+      },
+      {
+        path: 'stat/benefice',
+        component: BeneficeComponent,
       },
     ],
   },

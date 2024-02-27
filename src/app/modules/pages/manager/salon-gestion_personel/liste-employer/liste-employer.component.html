@@ -11,11 +11,10 @@
                         <!-- Filtrage -->
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Filtrer par nom ou prénom" [(ngModel)]="filterName">
+                                <input type="text" class="form-control" placeholder="Filtrer par nom" [(ngModel)]="filterString">
                             </div>
-                        </div>
+                        </div>                        
                     </div>
-
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                           <tr>
@@ -31,7 +30,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let employer of getPaginatedEmploymentData(); let i = index">
+                          <tr *ngFor="let employer of getPaginatedEmployees(); let i = index">
                             <td>{{ i+1 }}</td>
                             <td>{{ employer.id_individu.nom }} {{ employer.id_individu.prenom }}</td>
                             <td>{{ employer.code_fonction }}</td>
@@ -51,8 +50,9 @@
                               </td>                              
                           </tr>
                         </tbody>
-                    </table><!-- Pagination -->
-                    <pagination [totalItems]="getFilteredEmployments().length" [(ngModel)]="currentPage" [maxSize]="5" class="pagination-sm" [itemsPerPage]="itemsPerPage"></pagination>
+                      </table>
+                      <!-- Pagination -->
+                    <pagination [totalItems]="getFilteredEmployees().length" [(ngModel)]="currentPage" [maxSize]="5" class="pagination-sm" [itemsPerPage]="itemsPerPage"></pagination>
                 </div>
             </div>
         </div>

@@ -39,15 +39,8 @@ export class SalonService {
     });
   }
 
-  uploadImage(imageData: FormData): Observable<any> {
-    return this.http.post<any>(`${environments.BASE_URL}/services/upload-image`, imageData, {
-      headers: this.getHeaders(),
-    });
-  }
-
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem("token");
     return new HttpHeaders().set("Authorization", `Bearer ${token}`);
   }
-
 }
