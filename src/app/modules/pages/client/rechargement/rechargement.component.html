@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow-lg rounded-lg">
+            <div class="card-header bg-gradient-primary text-white">
+                <h5 class="m-0 font-weight-bold">Rechargement</h5>
+            </div>
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4" *ngIf="portefeuille_individu && portefeuille_individu.length > 0">Votre solde est de : {{ portefeuille_individu[0].solde }} Ar</h2>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="montant">Montant à recharger</label>
+            <input type="text" class="form-control" id="montant" name="montant" [(ngModel)]="montant">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <button
+        class="btn btn-success"
+        data-toggle="modal"
+        data-target="#recharge"
+      >
+        Recharger
+      </button>
+    </div>
+</div>
+
+
+<div
+  class="modal fade"
+  id="recharge"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure ?</h5>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-success" data-dismiss="modal" (click)="rechargement()">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>

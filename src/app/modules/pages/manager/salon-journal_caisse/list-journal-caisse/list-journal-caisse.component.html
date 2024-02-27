@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-12 mb-4">
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Journal Caisse</h6>
+          </div>
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Individu</th>
+                              <th>Titre</th>
+                              <th>Type mouvement</th>
+                              <th>Date heure</th>
+                              <th>Montant</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let journal of journalCaisse; let i = index">
+                              <td>{{ i+1 }}</td>
+                              <td>{{ journal.id_individu.nom }} {{ journal.id_individu.prenom }}</td>
+                              <td>{{ journal.libeller_journal }}</td>
+                              <td>{{ journal.type_mouvement }}</td>
+                              <td>{{ journal.date_heure | date:'yyyy-MM-dd' }}</td> 
+                              <td>{{ journal.montant }} Ar</td>                           
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-4">
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Calcul journal caisse</h6>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-4">
+                      <label for="dateDebut">Date de début :</label>
+                      <input type="date" id="dateDebut" class="form-control" name="dateDebut" [(ngModel)]="datedebut" />
+                  </div>
+                  <div class="col-md-4">
+                      <label for="dateFin">Date de fin :</label>
+                      <input type="date" id="dateFin" class="form-control" name="dateFin" [(ngModel)]="datefin" />
+                  </div>
+                  <div class="col-md-4">
+                      <button class="btn btn-success mt-4" (click)="calculerBeneficePerte()">Calculer <i class="fas fa-check"></i></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="rechercheEnCours" class="row">
+  <div class="col-md-12">
+      <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Résultats de la recherche</h6>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-4">
+                      <p><strong>Date de début :</strong> {{ datedebut }}</p>
+                  </div>
+                  <div class="col-md-4">
+                      <p><strong>Date de fin :</strong> {{ datefin }}</p>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">
+                      <p><strong>Total Dépense :</strong> {{ totalDepense }} Ar</p>
+                  </div>
+                  <div class="col-md-4">
+                      <p><strong>Total Gain :</strong> {{ totalGain }} Ar</p>
+                  </div>
+                  <div class="col-md-4">
+                      <p><strong>Bénéfice/Perte :</strong> {{ beneficePerte }} Ar</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -22,6 +22,12 @@ import { ProfileComponent } from './modules/pages/public/profile/profile.compone
 import { RdvEmplyerComponent } from './modules/pages/employer/rdv-emplyer/rdv-emplyer.component';
 import { AddOffreComponent } from './modules/pages/manager/salon-offre_speciale/add-offre/add-offre.component';
 import { NotificationComponent } from './modules/pages/client/notification/notification.component';
+import { RechargementComponent } from './modules/pages/client/rechargement/rechargement.component';
+import { AddDepenseComponent } from './modules/pages/manager/salon-journal_caisse/add-depense/add-depense.component';
+import { ListJournalCaisseComponent } from './modules/pages/manager/salon-journal_caisse/list-journal-caisse/list-journal-caisse.component';
+import { PaiementSalaireComponent } from './modules/pages/manager/salon-paiement_salaire/paiement-salaire/paiement-salaire.component';
+import { PaiementDetailComponent } from './modules/pages/client/paiement-detail/paiement-detail.component';
+import { ListOffreComponent } from './modules/pages/manager/salon-offre_speciale/list-offre/list-offre.component';
 
 
 @NgModule({
@@ -42,6 +48,12 @@ import { NotificationComponent } from './modules/pages/client/notification/notif
     RdvEmplyerComponent,
     AddOffreComponent,
     NotificationComponent,
+    RechargementComponent,
+    AddDepenseComponent,
+    ListJournalCaisseComponent,
+    PaiementSalaireComponent,
+    PaiementDetailComponent,
+    ListOffreComponent,
   ],
   imports: [
     BrowserModule,

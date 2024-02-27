@@ -164,6 +164,7 @@
           class="btn btn-primary"
           data-dismiss="modal"
           *ngIf="rdvByid.etat === 'Valider'"
+          (click)="insererTraitement(rdvByid._id)"
         >
           Payer
         </button>

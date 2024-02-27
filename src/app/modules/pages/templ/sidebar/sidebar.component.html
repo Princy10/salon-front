@@ -71,18 +71,27 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestion offre spéciale:</h6>
-                        <a class="collapse-item" href="#">liste offre</a>
+                        <a class="collapse-item" href="/list-offre">liste offre</a>
                         <a class="collapse-item" href="/add-offre">add offre</a>
                     </div>
                 </div>
             </li>
 
-
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-credit-card"></i>
-                    <span>Paiement salaire</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCaisse"
+                    aria-expanded="true" aria-controls="collapseCaisse">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Caisse</span>
+                </a>
+                <div id="collapseCaisse" class="collapse" aria-labelledby="headingCaisse" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Journal caisse</h6>
+                        <a class="collapse-item" href="/add-depense">Add dépense</a>
+                        <a class="collapse-item" href="/list-journal">Journal</a>
+                    </div>
+                </div>
             </li>
+
         </div>
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -102,6 +111,12 @@
                 <a class="nav-link" href="/list-rdv">
                     <i class="fas fa-fw fa-history"></i>
                     <span>Liste des rendez-vous</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/rechargement">
+                    <i class="fas fa-fw fa-credit-card"></i>
+                    <span>Rechargement</span></a>
             </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">

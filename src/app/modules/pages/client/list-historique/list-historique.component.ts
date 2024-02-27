@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RdvService } from 'src/app/modules/services/rdv/rdv.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-historique',
@@ -18,7 +19,7 @@ export class ListHistoriqueComponent {
     services: [{ titre: "", prix: "" }]
   };
 
-  constructor(private rdvService: RdvService) { }
+  constructor(private rdvService: RdvService, private router: Router) { }
 
   ngOnInit(): void {
     this.getClientById();
@@ -51,4 +52,19 @@ export class ListHistoriqueComponent {
       }
     );
   }
+
+  insererTraitement(id: string): void {
+    this.rdvService.inserertraitement(id)
+      .subscribe(
+        (traitementEnregistre) => {
+          console.log('Traitement inséré avec succès');
+          const traitementId = traitementEnregistre.traitementEnregistre._id;
+          this.router.navigate(['/paiement-detail', traitementId, { idRdv: id }]);
+        },
+        error => {
+          console.error('Erreur lors de l\'insertion du traitement :', error);
+        }
+      );
+  }
+
 }
