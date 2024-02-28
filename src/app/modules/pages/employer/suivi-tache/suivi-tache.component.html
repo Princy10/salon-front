@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Suivi des tâches effectués </h6>
+        </div>
+  
+        <div class="card-body">
+          <div class="table-responsive">
+            <table
+              class="table table-bordered"
+              id="dataTable"
+              width="100%"
+              cellspacing="0"
+            >
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Client</th>
+                  <th>Date et heure</th>
+                  <th>Etat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let rdv of rdvByidEmployer; let i = index">
+                    <tr>
+                      <td>{{ i + 1 }}</td>
+                      <td>
+                        {{ rdv.id_individu_client.nom }}
+                        {{ rdv.id_individu_client.prenom }}
+                      </td>
+                      <td>{{ rdv.date_heure }}</td>
+                      <td>{{ rdv.etat }}</td>
+                    </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Montant du commission par journée </h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="dateDebut">Choisir une date :</label>
+                        <input type="date" id="dateDebut" class="form-control" name="dateDebut" [(ngModel)]="date" />
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-success mt-4" (click)="calculerCommissionJournee()">Calculer <i class="fas fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div *ngIf="rechercheEnCours" class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Résultats de la recherche</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><strong>Total de la commission pour la journée:</strong> {{ commissionTotal }} Ar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

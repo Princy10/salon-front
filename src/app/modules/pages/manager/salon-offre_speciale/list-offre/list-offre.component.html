@@ -7,6 +7,14 @@
 
             <div class="card-body">
                 <div class="table-responsive">
+                    <div class="row">
+                        <!-- Filtrage -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Filtrer par service, titre, prix" [(ngModel)]="filterString">
+                            </div>
+                        </div>                        
+                    </div>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                           <tr>
@@ -21,7 +29,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let off of offre; let i = index">
+                          <tr *ngFor="let off of getPaginatedOffres(); let i = index">
                             <td>{{ i+1 }}</td>
                             <td>{{ off.id_service.titre }}</td>
                             <td>{{ off.titre }} </td>
@@ -41,6 +49,9 @@
                           </tr>
                         </tbody>
                       </table>
+                      <!-- Pagination -->
+                    <pagination [totalItems]="getFilteredOffres().length" [(ngModel)]="currentPage" [maxSize]="5" class="pagination-sm" [itemsPerPage]="itemsPerPage"></pagination>
+                
                 </div>
             </div>
         </div>

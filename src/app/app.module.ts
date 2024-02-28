@@ -28,7 +28,14 @@ import { ListJournalCaisseComponent } from './modules/pages/manager/salon-journa
 import { PaiementSalaireComponent } from './modules/pages/manager/salon-paiement_salaire/paiement-salaire/paiement-salaire.component';
 import { PaiementDetailComponent } from './modules/pages/client/paiement-detail/paiement-detail.component';
 import { ListOffreComponent } from './modules/pages/manager/salon-offre_speciale/list-offre/list-offre.component';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ReservationComponent } from './modules/pages/manager/statistique/reservation/reservation.component';
+import { ChiffreAffaireComponent } from './modules/pages/manager/statistique/chiffre-affaire/chiffre-affaire.component';
+import { BeneficeComponent } from './modules/pages/manager/statistique/benefice/benefice.component';
+import { SuiviTacheComponent } from './modules/pages/employer/suivi-tache/suivi-tache.component';
+import { HistoriquePaiementComponent } from './modules/pages/employer/historique-paiement/historique-paiement.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +61,11 @@ import { ListOffreComponent } from './modules/pages/manager/salon-offre_speciale
     PaiementSalaireComponent,
     PaiementDetailComponent,
     ListOffreComponent,
+    ReservationComponent,
+    ChiffreAffaireComponent,
+    BeneficeComponent,
+    SuiviTacheComponent,
+    HistoriquePaiementComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +74,10 @@ import { ListOffreComponent } from './modules/pages/manager/salon-offre_speciale
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    CarouselModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

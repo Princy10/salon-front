@@ -47,4 +47,13 @@ export class RdvService {
   inserertraitement(id: string): Observable<any> {
     return this.http.post<any>(`${environments.BASE_URL}/traitement/create/${id}`, {});
   }
+
+  //suivi tache
+  getRdvByIdEmplAndEtat(id: string): Observable<any> {
+    return this.http.get(`${environments.BASE_URL}/prise_rdv/listByEtat/${id}`);
+  }
+
+  getCommissionJournee(Data: any): Observable<any> {
+    return this.http.post<any>(`${environments.BASE_URL}/traitement/commission-journee`, Data);
+  }
 }

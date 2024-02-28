@@ -35,6 +35,12 @@ export class JournalCaisseService {
     });
   }
 
+  getJournalById_individu(id: string): Observable<any> {
+    return this.http.get(`${environments.BASE_URL}/journalCaisse/list/${id}`,{
+      headers: this.getHeaders(),
+    });
+  }
+
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem("token");
     return new HttpHeaders().set("Authorization", `Bearer ${token}`).set('Content-Type', 'application/json');

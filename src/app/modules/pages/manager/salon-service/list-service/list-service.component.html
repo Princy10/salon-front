@@ -7,6 +7,14 @@
 
             <div class="card-body">
                 <div class="table-responsive">
+                    <div class="row">
+                        <!-- Filtrage -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Filtrer par titre, prix ou durée" [(ngModel)]="filterString">
+                            </div>
+                        </div>                        
+                    </div>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                           <tr>
@@ -20,7 +28,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let service of services; let i = index">
+                          <tr *ngFor="let service of getPaginatedServices(); let i = index">
                             <td>{{ i+1 }}</td>
                             <td>{{ service.titre }}</td>
                             <td>{{ service.prix }} Ar</td>
@@ -30,7 +38,7 @@
                                 <button class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target="#serviceModal" (click)="getServiceById(service._id)">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                            </td>  
+                            </td>
                             <td>
                                 <button class="btn btn-danger btn-circle btn-sm"  data-toggle="modal" data-target="#deleteModal" (click)="getServiceById(service._id)">
                                   <i class="fas fa-trash"></i>
@@ -38,7 +46,9 @@
                               </td>                              
                           </tr>
                         </tbody>
-                      </table>
+                    </table>
+                    <!-- Pagination -->
+                    <pagination [totalItems]="getFilteredServices().length" [(ngModel)]="currentPage" [maxSize]="5" class="pagination-sm" [itemsPerPage]="itemsPerPage"></pagination>
                 </div>
             </div>
         </div>

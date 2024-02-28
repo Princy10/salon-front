@@ -21,6 +21,11 @@ import { ListJournalCaisseComponent } from './modules/pages/manager/salon-journa
 import { PaiementSalaireComponent } from './modules/pages/manager/salon-paiement_salaire/paiement-salaire/paiement-salaire.component';
 import { PaiementDetailComponent } from './modules/pages/client/paiement-detail/paiement-detail.component';
 import { ListOffreComponent } from './modules/pages/manager/salon-offre_speciale/list-offre/list-offre.component';
+import { ChiffreAffaireComponent } from './modules/pages/manager/statistique/chiffre-affaire/chiffre-affaire.component';
+import { ReservationComponent } from './modules/pages/manager/statistique/reservation/reservation.component';
+import { BeneficeComponent } from './modules/pages/manager/statistique/benefice/benefice.component';
+import { SuiviTacheComponent } from './modules/pages/employer/suivi-tache/suivi-tache.component';
+import { HistoriquePaiementComponent } from './modules/pages/employer/historique-paiement/historique-paiement.component';
 
 const routes: Routes = [
   // without layout
@@ -111,6 +116,26 @@ const routes: Routes = [
       {
         path: 'paiement-detail/:id',
         component: PaiementDetailComponent,
+      },
+      {
+        path: 'stat/reservation',
+        component: ReservationComponent,
+      },
+      {
+        path: 'stat/chiffre-affaire',
+        component: ChiffreAffaireComponent,
+      },
+      {
+        path: 'stat/benefice',
+        component: BeneficeComponent,
+      },
+      {
+        path: 'suivi-tache',
+        component: SuiviTacheComponent,
+      },
+      {
+        path: 'historique-paiement',
+        component: HistoriquePaiementComponent,
       },
     ],
   },

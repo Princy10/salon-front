@@ -19,6 +19,10 @@ export class ListeEmployerComponent {
   }
   socket!: Socket;
 
+  currentPage = 1;
+  itemsPerPage = 5;
+  filterString = "";
+
   constructor(private gestionPersonelService: GestionPersonelService) { }
 
   ngOnInit(): void {
@@ -42,6 +46,21 @@ export class ListeEmployerComponent {
       (error) => {
         console.error(error);
       }
+    );
+  }
+
+  getFilteredEmployees(): any[] {
+    return this.emploi.filter((emploi) =>
+      emploi.id_individu.nom.toLowerCase().includes(this.filterString.toLowerCase()) ||
+      emploi.id_individu.prenom.toString().toLowerCase().includes(this.filterString.toLowerCase())
+    );
+  }
+
+  getPaginatedEmployees(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.getFilteredEmployees().slice(
+      startIndex,
+      startIndex + this.itemsPerPage
     );
   }
 

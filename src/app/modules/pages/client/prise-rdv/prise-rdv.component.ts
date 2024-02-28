@@ -31,11 +31,11 @@ export class PriseRdvComponent implements OnInit {
   preferencesData = {
     preferences: [
       {
-        _id: '65d72da78be58649ded57737',
+        _id: '',
         id_client: {
-          _id: '65c4dc67910757fc85202d20',
-          nom: 'RABE',
-          prenom: 'Lita',
+          _id: '',
+          nom: '',
+          prenom: '',
         },
         id_employer: {
           _id: "",
@@ -46,10 +46,10 @@ export class PriseRdvComponent implements OnInit {
     ],
     preferencesService: [
       {
-        _id: '65d72db38be58649ded58884',
+        _id: '',
         id_client: {
-          nom: 'RABE',
-          prenom: 'Lita',
+          nom: '',
+          prenom: '',
         },
         id_service: {
           _id: "",
@@ -247,6 +247,4 @@ export class PriseRdvComponent implements OnInit {
       });
     }
   }
-  
-
 }

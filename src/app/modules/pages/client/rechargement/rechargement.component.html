@@ -12,26 +12,27 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label for="montant">Montant à recharger</label>
-            <input type="text" class="form-control" id="montant" name="montant" [(ngModel)]="montant">
-        </div>
-    </div>
+<div class="row" *ngIf="user.role === 'client'">
+  <div class="col-md-12">
+      <div class="form-group">
+          <label for="montant">Montant à recharger</label>
+          <input type="text" class="form-control" id="montant" name="montant" [(ngModel)]="montant">
+      </div>
+  </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <button
-        class="btn btn-success"
-        data-toggle="modal"
-        data-target="#recharge"
+<div class="row" *ngIf="user.role === 'client'">
+  <div class="col-md-12">
+      <button
+          class="btn btn-success"
+          data-toggle="modal"
+          data-target="#recharge"
       >
-        Recharger
+          Recharger
       </button>
-    </div>
+  </div>
 </div>
+
 
 
 <div

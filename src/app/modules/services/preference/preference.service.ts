@@ -21,4 +21,5 @@ export class PreferenceService {
   getPreferenceById(id: string): Observable<any> {
     return this.http.get(`${environments.BASE_URL}/preference_employer/list/${id}`);
   }
+
 }

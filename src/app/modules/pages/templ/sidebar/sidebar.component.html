@@ -23,10 +23,19 @@
                 Manager
             </div>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwokk"
+                    aria-expanded="true" aria-controls="collapseTwokk">
                     <i class="fas fa-fw fa-bar-chart"></i>
-                    <span>Statistique</span></a>
+                    <span>Statistique</span>
+                </a>
+                <div id="collapseTwokk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/stat/reservation">Reservation</a>
+                        <a class="collapse-item" href="/stat/chiffre-affaire">Chiffre d'affaire</a>
+                        <a class="collapse-item" href="/stat/benefice">Benefice</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -96,56 +105,23 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div *ngIf="user.role == 'client'">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Client
-            </div>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/rdv">
-                    <i class="fas fa-fw fa-clock"></i>
-                    <span>Prise de rendez-vous</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/list-rdv">
-                    <i class="fas fa-fw fa-history"></i>
-                    <span>Liste des rendez-vous</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/rechargement">
-                    <i class="fas fa-fw fa-credit-card"></i>
-                    <span>Rechargement</span></a>
-            </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Client
                 </div>
-            </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-</div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/rdv">
+                        <i class="fas fa-fw fa-clock"></i>
+                        <span>Prise de rendez-vous</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/list-rdv">
+                        <i class="fas fa-fw fa-history"></i>
+                        <span>Liste des rendez-vous</span></a>
+                </li>
+            </div>
                 <hr class="sidebar-divider">
                 <div *ngIf="user.role == 'employer'">
                 <!-- Heading -->
@@ -159,32 +135,16 @@
                         <span>Rendez-vous</span></a>
                 </li>
 
-                <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                        aria-expanded="true" aria-controls="collapsePages">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
-                    </a>
-                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Login Screens:</h6>
-                            <a class="collapse-item" href="login.html">Login</a>
-                            <a class="collapse-item" href="register.html">Register</a>
-                            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                            <div class="collapse-divider"></div>
-                            <h6 class="collapse-header">Other Pages:</h6>
-                            <a class="collapse-item" href="404.html">404 Page</a>
-                            <a class="collapse-item" href="blank.html">Blank Page</a>
-                        </div>
-                    </div>
+                    <a class="nav-link" href="suivi-tache">
+                        <i class="fas fa-fw fa-clock"></i>
+                        <span>Suivi des tâches</span></a>
                 </li>
 
-                <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                    <a class="nav-link" href="historique-paiement">
+                        <i class="fas fa-fw fa-clock"></i>
+                        <span>Hitorique de paiement</span></a>
                 </li>
                 </div>
         </ul>
@@ -204,7 +164,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Topbar Search -->
+                <!-- Topbar Search
                 <form
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
@@ -216,7 +176,7 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> -->
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -248,7 +208,7 @@
                     <!-- Nav Item - Alerts -->
                     <li class="nav-item dropdown no-arrow mx-1" *ngIf="user.role == 'client'">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                           <i class="fas fa-bell fa-fw"></i>
                           <!-- Counter - Alerts -->
                           <span class="badge badge-danger badge-counter">{{ notif.length }}</span>
@@ -270,76 +230,9 @@
                               <span class="font-weight-bold">{{ notification.offreSpeciale.description }}</span>
                             </div>
                           </a>
-                          <a class="dropdown-item text-center small text-gray-500" >Show All Alerts</a>
+                          <a class="dropdown-item text-center small text-gray-500" (click)="resetNotificationCounter()">Marquer tout comme lu</a>
                         </div>
                       </li>
-                      
-
-                    <!-- Nav Item - Messages -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-envelope fa-fw"></i>
-                            <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="messagesDropdown">
-                            <h6 class="dropdown-header">
-                                Message Center
-                            </h6>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="assets/img/undraw_profile_1.svg"
-                                        alt="...">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
-                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="assets/img/undraw_profile_2.svg"
-                                        alt="...">
-                                    <div class="status-indicator"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
-                                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="assets/img/undraw_profile_3.svg"
-                                        alt="...">
-                                    <div class="status-indicator bg-warning"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
-                                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                        alt="...">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
-                                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                        </div>
-                    </li>
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -358,7 +251,7 @@
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
-                            <a class="dropdown-item" href="#" *ngIf="user.role == 'client'">
+                            <a class="dropdown-item" href="/rechargement" *ngIf="user.role == 'client' || user.role == 'employer'">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Porte feuille
                             </a>

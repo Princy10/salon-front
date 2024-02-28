@@ -7,7 +7,6 @@ import { OffreSpecialeService } from 'src/app/modules/services/offre_speciale/of
   styleUrls: ['./list-offre.component.css']
 })
 export class ListOffreComponent {
-
   offre: any[] = []
   offreById: any = {
     "_id": "",
@@ -25,6 +24,10 @@ export class ListOffreComponent {
         "description": "",
   }
 
+  currentPage = 1;
+  itemsPerPage = 5;
+  filterString = "";
+
   constructor(private offreServicce: OffreSpecialeService, ) { }
 
   ngOnInit(): void {
@@ -41,6 +44,22 @@ export class ListOffreComponent {
       (error) => {
         console.error(error);
       }
+    );
+  }
+
+  getFilteredOffres(): any[] {
+    return this.offre.filter((offre) =>
+      offre.id_service.titre.toLowerCase().includes(this.filterString.toLowerCase()) ||
+      offre.titre.toString().toLowerCase().includes(this.filterString.toLowerCase()) ||
+      offre.prix.toString().toLowerCase().includes(this.filterString.toLowerCase())
+    );
+  }
+
+  getPaginatedOffres(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.getFilteredOffres().slice(
+      startIndex,
+      startIndex + this.itemsPerPage
     );
   }
 

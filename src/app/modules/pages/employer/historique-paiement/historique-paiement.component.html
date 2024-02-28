@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">historique de paiement salaire</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Individu</th>
+                                <th>Titre</th>
+                                <th>Date heure</th>
+                                <th>Montant</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let histo of historique; let i = index">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ histo.id_individu.nom }} {{ histo.id_individu.prenom }}</td>
+                                <td>{{ histo.libeller_journal }}</td>
+                                <td>{{ histo.date_heure | date:'yyyy-MM-dd' }}</td> 
+                                <td>{{ histo.montant }} Ar</td>                           
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
