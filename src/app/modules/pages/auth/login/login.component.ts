@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/modules/services/user/user.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   username: string = '';
   password: string = '';
 
@@ -18,6 +18,10 @@ export class LoginComponent {
     private userService: UserService,
     private router: Router) {}
 
+  ngOnInit(): void {
+    this.username = "manager";
+    this.password = "admin"
+  }
   login() {
     this.loading = true;
     this.userService.login(this.username, this.password).subscribe(
