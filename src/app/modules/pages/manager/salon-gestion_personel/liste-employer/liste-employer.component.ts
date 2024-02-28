@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GestionPersonelService } from 'src/app/modules/services/gestion_personel/gestion-personel.service';
 import { io, Socket} from 'socket.io-client';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environments } from 'src/environments/environments';
 
 @Component({
   selector: 'app-liste-employer',
@@ -28,7 +29,7 @@ export class ListeEmployerComponent {
 
   ngOnInit(): void {
     this.getEmployer();
-    this.socket = io('http://localhost:3000');
+    this.socket = io(environments.BASE_URL);
     this.socket.on('updateEmployer', () => {
       this.getEmployer();
     });

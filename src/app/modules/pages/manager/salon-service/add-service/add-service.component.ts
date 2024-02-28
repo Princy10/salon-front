@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SalonService } from 'src/app/modules/services/salon/salon.service';
 import { Router } from '@angular/router';
 import { io, Socket} from 'socket.io-client';
+import { environments } from 'src/environments/environments';
 
 @Component({
   selector: 'app-add-service',
@@ -23,7 +24,7 @@ export class AddServiceComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit(): void {
-    this.socket = io('http://localhost:3000');
+    this.socket = io(environments.BASE_URL);
     this.socket.on('addService', () => {});
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GestionPersonelService } from 'src/app/modules/services/gestion_personel/gestion-personel.service';
 import { Router } from '@angular/router';
 import { io, Socket} from 'socket.io-client';
+import { environments } from 'src/environments/environments';
 
 @Component({
   selector: 'app-add-employer',
@@ -33,7 +34,7 @@ export class AddEmployerComponent implements OnInit {
     this.Employer.role = "employer";
     this.Employer.heure_travail = "0";
 
-    this.socket = io('http://localhost:3000');
+    this.socket = io(environments.BASE_URL);
     this.socket.on('ajout_employe', () => {});
   }
 

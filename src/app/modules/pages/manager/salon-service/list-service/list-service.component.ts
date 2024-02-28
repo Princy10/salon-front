@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { SalonService } from "src/app/modules/services/salon/salon.service";
 import { io, Socket } from "socket.io-client";
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environments } from 'src/environments/environments';
 
 @Component({
   selector: "app-list-service",
@@ -26,7 +27,7 @@ export class ListServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getServices();
-    this.socket = io("http://localhost:3000");
+    this.socket = io(environments.BASE_URL);
     this.socket.on("updateServiceById", () => {
       this.getServices();
     });
