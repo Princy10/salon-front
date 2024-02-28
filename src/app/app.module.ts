@@ -30,12 +30,15 @@ import { PaiementDetailComponent } from './modules/pages/client/paiement-detail/
 import { ListOffreComponent } from './modules/pages/manager/salon-offre_speciale/list-offre/list-offre.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ReservationComponent } from './modules/pages/manager/statistique/reservation/reservation.component';
 import { ChiffreAffaireComponent } from './modules/pages/manager/statistique/chiffre-affaire/chiffre-affaire.component';
 import { BeneficeComponent } from './modules/pages/manager/statistique/benefice/benefice.component';
 import { SuiviTacheComponent } from './modules/pages/employer/suivi-tache/suivi-tache.component';
 import { HistoriquePaiementComponent } from './modules/pages/employer/historique-paiement/historique-paiement.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -78,6 +81,9 @@ import { HistoriquePaiementComponent } from './modules/pages/employer/historique
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
+    AlertModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

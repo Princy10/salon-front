@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PaiementService } from 'src/app/modules/services/paiement/paiement.service';
 import { Router, ActivatedRoute } from "@angular/router";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-paiement-detail',
@@ -39,6 +40,7 @@ paiement: any = {
     private paiementService: PaiementService,
     private router: ActivatedRoute,
     private routers: Router,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -52,23 +54,28 @@ paiement: any = {
   }
 
   getPaiementById(id_traitement: string,id_rdv: string) {
+    this.spinner.show('spin');
     this.paiementService.getPaiementById(id_traitement,id_rdv).subscribe((res) => {
       this.paiement = res as any;
       console.log( this.paiement);
-      
+      this.spinner.hide('spin');
     })
   }
 
   effectuerPaiement(id: string, montant: number): void {
+    this.spinner.show('spin');
     this.paiementService.payer(id,this.idRdv,montant)
       .subscribe(
         () => {
           console.log('Paiement effectué avec succès');
           this.messageSucces = 'Paiement effectué avec succès';
+
+          this.spinner.hide('spin');
         },
         error => {
           this.messageErreur = error.error.message;
           console.error('Erreur lors du paiement :', error);
+          this.spinner.hide('spin');
         }
       );
   }

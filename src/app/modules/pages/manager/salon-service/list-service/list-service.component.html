@@ -50,6 +50,7 @@
                     <!-- Pagination -->
                     <pagination [totalItems]="getFilteredServices().length" [(ngModel)]="currentPage" [maxSize]="5" class="pagination-sm" [itemsPerPage]="itemsPerPage"></pagination>
                 </div>
+                <ngx-spinner [name]="'spinR'" bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "line-spin-fade" [fullScreen] = "false"><p style="color: white" ></p></ngx-spinner>        
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OffreSpecialeService } from 'src/app/modules/services/offre_speciale/offre-speciale.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-list-offre',
@@ -28,7 +29,7 @@ export class ListOffreComponent {
   itemsPerPage = 5;
   filterString = "";
 
-  constructor(private offreServicce: OffreSpecialeService, ) { }
+  constructor(private offreServicce: OffreSpecialeService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getOffre();
@@ -36,13 +37,16 @@ export class ListOffreComponent {
 
 
   getOffre(): void {
+    this.spinner.show('spinR');
     this.offreServicce.getOffre().subscribe(
       (data) => {
         this.offre = data;
         console.log(data);
+        this.spinner.hide('spinR');
       },
       (error) => {
         console.error(error);
+        this.spinner.hide('spinR');
       }
     );
   }

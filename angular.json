@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "m1p10mean-princy-nampiana": {
+    "m1p11mean-princy-nampiana": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/m1p10mean-princy-nampiana",
+            "outputPath": "dist/m1p11mean-princy-nampiana",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -26,7 +26,8 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-spinner/animations/line-spin-fade.css"
             ],
             "scripts": []
           },
@@ -61,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "m1p10mean-princy-nampiana:build:production"
+              "browserTarget": "m1p11mean-princy-nampiana:build:production"
             },
             "development": {
-              "browserTarget": "m1p10mean-princy-nampiana:build:development"
+              "browserTarget": "m1p11mean-princy-nampiana:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "m1p10mean-princy-nampiana:build"
+            "browserTarget": "m1p11mean-princy-nampiana:build"
           }
         },
         "test": {
@@ -89,7 +90,8 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "src/style.scss"
+              "src/style.scss",
+              "node_modules/ngx-spinner/animations/line-spin-fade.css"
             ],
             "scripts": []
           }

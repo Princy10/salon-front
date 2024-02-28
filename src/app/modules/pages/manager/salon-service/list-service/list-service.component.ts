@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SalonService } from "src/app/modules/services/salon/salon.service";
 import { io, Socket } from "socket.io-client";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: "app-list-service",
@@ -21,7 +22,7 @@ export class ListServiceComponent implements OnInit {
   itemsPerPage = 5;
   filterString = "";
 
-  constructor(private salonService: SalonService) {}
+  constructor(private salonService: SalonService, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.getServices();
@@ -36,13 +37,16 @@ export class ListServiceComponent implements OnInit {
   }
 
   getServices(): void {
+    this.spinner.show('spinR');
     this.salonService.getServices().subscribe(
       (data) => {
         this.services = data;
         console.log(data);
+        this.spinner.hide('spinR');
       },
       (error) => {
         console.error(error);
+        this.spinner.hide('spinR');
       }
     );
   }

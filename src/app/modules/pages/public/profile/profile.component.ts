@@ -10,6 +10,9 @@ export class ProfileComponent implements OnInit {
   user: any = {};
   new_password: string = "";
 
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+
   ngOnInit(): void {
     this.getInfoUser();
   }
@@ -60,9 +63,18 @@ export class ProfileComponent implements OnInit {
           };
           localStorage.setItem("currentUser", JSON.stringify(userData));
         }
+
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       },
       (error) => {
         console.error(error);
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       }
     );
   }

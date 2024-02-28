@@ -10,9 +10,9 @@ export class PreferenceService {
 
   constructor(private http: HttpClient) { }
 
-  /*getPreferenceEmplById(id: string): Observable<any> {
-    return this.http.get(`${environments.BASE_URL}/preference_employer/list/${id}`);
-  }*/
+  getPreferenceEmplById(id: string): Observable<any> {
+    return this.http.get(`${environments.BASE_URL}/preference_employer/liste/${id}`);
+  }
 
   getPreferenceServiceById(id: string): Observable<any> {
     return this.http.get(`${environments.BASE_URL}/preference_service/list/${id}`);

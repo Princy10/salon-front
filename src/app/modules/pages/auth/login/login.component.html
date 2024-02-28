@@ -39,5 +39,12 @@
         </form>
       </div>
     </div>
+    <ngx-spinner *ngIf="loading" [type]="'border'" [size]="'medium'" [color]="'#333333'"></ngx-spinner>
+
+    <div *ngIf="showAlert">
+      <alert type="danger" [dismissible]="true" (onClosed)="showAlert = false">
+        Une erreur s'est produite lors de la connexion. Veuillez réessayer.
+      </alert>
+    </div>
   </div>
 </section>

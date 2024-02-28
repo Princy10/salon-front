@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GestionPersonelService } from 'src/app/modules/services/gestion_personel/gestion-personel.service';
 import { io, Socket} from 'socket.io-client';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-liste-employer',
@@ -23,7 +24,7 @@ export class ListeEmployerComponent {
   itemsPerPage = 5;
   filterString = "";
 
-  constructor(private gestionPersonelService: GestionPersonelService) { }
+  constructor(private gestionPersonelService: GestionPersonelService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getEmployer();
@@ -38,13 +39,16 @@ export class ListeEmployerComponent {
   }
 
   getEmployer(): void {
+    this.spinner.show('spinR');
     this.gestionPersonelService.getEmployer().subscribe(
       (data) => {
         this.emploi = data;
         console.log(data);
+        this.spinner.hide('spinR');
       },
       (error) => {
         console.error(error);
+        this.spinner.hide('spinR');
       }
     );
   }

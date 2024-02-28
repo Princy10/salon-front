@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { JournalCaisseService } from 'src/app/modules/services/journal_caisse/journal-caisse.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/modules/services/user/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-paiement-salaire',
@@ -17,7 +18,8 @@ export class PaiementSalaireComponent {
   constructor(
    private journalCaisseService: JournalCaisseService,
    private userService: UserService,
-   private router: Router
+   private router: Router,
+   private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -25,12 +27,15 @@ export class PaiementSalaireComponent {
   }
 
   getListEmployer(): void {
+    this.spinner.show('spinR');
     this.userService.getListEmployer().subscribe(
       (data) => {
         this.listEmployer = data;
+        this.spinner.hide('spinR');
       },
       (error) => {
         console.error(error);
+        this.spinner.hide('spinR');
       }
     );
   }

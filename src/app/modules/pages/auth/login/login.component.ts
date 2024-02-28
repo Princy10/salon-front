@@ -11,11 +11,15 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
+  showAlert: boolean = false;
+  loading: boolean = false;
+
   constructor(
     private userService: UserService,
     private router: Router) {}
 
   login() {
+    this.loading = true;
     this.userService.login(this.username, this.password).subscribe(
       (user) => {
         localStorage.setItem('token', user.token);
@@ -26,6 +30,14 @@ export class LoginComponent {
       (error) => {
         console.log('login error');
         console.error(error);
+
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
+      },
+      () => {
+        this.loading = false;
       }
     );
   }

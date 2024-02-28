@@ -77,6 +77,17 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="showSuccessAlert">
+                    <alert type="success" [dismissible]="true" (onClosed)="showAlert = false">
+                      Utilisateur enregistré avec succès
+                    </alert>
+                  </div>
+            
+                  <div *ngIf="showAlert">
+                    <alert type="danger" [dismissible]="true" (onClosed)="showAlert = false">
+                      Erreur lors de l'enregistrement de l'utilisateur
+                    </alert>
+                  </div>
             </div>
         </div>
     </div>

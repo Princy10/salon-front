@@ -103,6 +103,17 @@
           </div>
         </div>
       </div>
+      <div *ngIf="showSuccessAlert">
+        <alert type="success" [dismissible]="true" (onClosed)="showAlert = false">
+          Rendez vous enregistré avec succès
+        </alert>
+      </div>
+
+      <div *ngIf="showAlert">
+        <alert type="danger" [dismissible]="true" (onClosed)="showAlert = false">
+          Erreur lors de l'enregistrement du rendez vous
+        </alert>
+      </div>
     </div>
   </div>
 </div>
@@ -139,46 +150,6 @@
   </div>
 </div>
 
-
-<!--<div class="row">
-  <div class="col-md-12 mb-4">
-    <div class="card shadow-lg rounded-lg">
-      <div class="card-header bg-gradient-primary text-white">
-        <h5 class="m-0 font-weight-bold">Vos préférences</h5>
-      </div>
-      <div class="card-body">
-        <h6 class="font-weight-bold">Préférences des employés :</h6>
-        <ul class="list-group">
-          <ng-container *ngFor="let preference of preferencesData.preferences">
-            <li class="list-group-item">
-              {{ preference.id_employer.nom }} {{ preference.id_employer.prenom }}
-            </li>
-          </ng-container>
-        </ul>
-        <h6 class="font-weight-bold mt-4">Préférences des services :</h6>
-        <ul class="list-group">
-          <ng-container *ngFor="let preferenceService of preferencesData.preferencesService">
-            <li class="list-group-item">
-              {{ preferenceService.id_service.titre }} - {{ preferenceService.id_service.prix }} Ar
-            </li>
-          </ng-container>
-        </ul>
-        <div class="mt-4">
-          <label for="form3Example3" class="form-label">Sélectionner une date et une heure :</label>
-          <input
-            type="datetime-local"
-            id="form3Example3"
-            class="form-control"
-            name="date_heure"
-            [(ngModel)]="selectedDatePref"
-          />
-        </div>
-        <button class="btn btn-primary mt-4" (click)="ajoutPreferenceRdv()">Valider</button>
-      </div>
-    </div>
-  </div>
-</div>-->
-
 <div class="row justify-content-center">
   <div class="col-md-8">
     <div class="card shadow-lg rounded-lg">
@@ -188,14 +159,14 @@
       <div class="card-body">
         <h6 class="font-weight-bold">Préférences des employés :</h6>
         <ul class="list-group">
-          <li class="list-group-item">
+          <li class="list-group-item" *ngIf="preferencesData.preferences.length>0">
             {{ preferencesData.preferences[preferencesData.preferences.length - 1].id_employer.nom }}
             {{ preferencesData.preferences[preferencesData.preferences.length - 1].id_employer.prenom }}
           </li>
         </ul>
         <h6 class="font-weight-bold mt-4">Préférences des services :</h6>
         <ul class="list-group">
-          <li class="list-group-item">
+          <li class="list-group-item" *ngIf="preferencesData.preferencesService.length>0">
             {{ preferencesData.preferencesService[preferencesData.preferencesService.length - 1].id_service.titre }}
             - {{ preferencesData.preferencesService[preferencesData.preferencesService.length - 1].id_service.prix }} Ar
           </li>

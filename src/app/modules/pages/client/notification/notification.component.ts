@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NotificationService } from 'src/app/modules/services/notification/notification.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-notification',
@@ -27,8 +28,7 @@ export class NotificationComponent {
     },
 }
 
-  constructor(private notifService: NotificationService, private router: ActivatedRoute
-  ) {}
+  constructor(private notifService: NotificationService, private router: ActivatedRoute, private spinner: NgxSpinnerService ) {}
 
   ngOnInit(): void {
     this.router.paramMap.subscribe(params => {
@@ -40,8 +40,10 @@ export class NotificationComponent {
   }
 
   getNotifById(id_notif: string) {
+    this.spinner.show('spin');
     this.notifService.getNotifById(id_notif).subscribe((res) => {
       this.notifById = res as any;
+      this.spinner.hide('spin');
     })
   }
 }

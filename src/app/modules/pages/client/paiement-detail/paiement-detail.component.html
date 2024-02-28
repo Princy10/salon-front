@@ -34,6 +34,7 @@
                 </div>
                 <div *ngIf="messageErreur" class="alert alert-danger mt-3">{{ messageErreur }}</div>
                 <div *ngIf="messageSucces" class="alert alert-success mt-3">{{ messageSucces }}</div>
+                <ngx-spinner [name]="'spin'" bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "line-spin-fade" [fullScreen] = "false"><p style="color: white" >Loading...</p></ngx-spinner>
             </div>
         </div>
     </div>
@@ -57,7 +58,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary" (click)="effectuerPaiement(paiement.id_individu_client._id,paiement.totalPrix)">Valider</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="effectuerPaiement(paiement.id_individu_client._id,paiement.totalPrix)">Valider</button>
             </div>
         </div>
     </div>

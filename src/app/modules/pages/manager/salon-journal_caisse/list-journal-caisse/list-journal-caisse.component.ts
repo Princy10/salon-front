@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { JournalCaisseService } from 'src/app/modules/services/journal_caisse/journal-caisse.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-list-journal-caisse',
@@ -21,6 +22,7 @@ export class ListJournalCaisseComponent {
   constructor(
     private journalCaisseService: JournalCaisseService,
     private router: Router,
+    private spinner: NgxSpinnerService
    ) {}
 
    ngOnInit(): void {
@@ -28,13 +30,16 @@ export class ListJournalCaisseComponent {
   }
 
   getAllJournal(): void {
+    this.spinner.show('spinR');
     this.journalCaisseService.getJournalCaisse().subscribe(
       (data) => {
         this.journalCaisse = data;
         console.log(data);
+        this.spinner.hide('spinR');
       },
       (error) => {
         console.error(error);
+        this.spinner.hide('spinR');
       }
     );
   }

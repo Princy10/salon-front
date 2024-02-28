@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RdvService } from 'src/app/modules/services/rdv/rdv.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-rdv-emplyer',
@@ -19,19 +20,21 @@ export class RdvEmplyerComponent {
   };
   
 
-  constructor(private rdvService: RdvService) { }
+  constructor(private rdvService: RdvService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getEmployerById();
   }
 
   getEmployerById() {
+    this.spinner.show('spinR');
     const currentUser = localStorage.getItem("currentUser");
     if (currentUser) {
       const userData = JSON.parse(currentUser);
       this.user = userData;
       this.rdvService.getRdvEmployerById(this.user.individu._id).subscribe((res) => {
       this.rdvByidEmployer = res as any;
+      this.spinner.hide('spinR');
     })
   }
   }

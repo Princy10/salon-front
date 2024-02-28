@@ -64,6 +64,9 @@ export class PriseRdvComponent implements OnInit {
   selectedDate: string = "";
   selectedDatePref: string = "";
 
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+
   constructor(
     private salonService: SalonService,
     private userService: UserService,
@@ -146,14 +149,22 @@ export class PriseRdvComponent implements OnInit {
       this.rdvService.insererRdvEtServices(rdvData).subscribe(
         (response) => {
           console.log('Rendez-vous et services enregistrés avec succès');
-  
+          this.showSuccessAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 5000);
+
           this.selectedEmployerId = '';
           this.selectedDate = '';
           this.listChoixServices = [];
 
-          this.router.navigate(['/historique']);
+          this.router.navigate(['/list-rdv']);
         },
         (error) => {
+          this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 5000);
           console.error('Erreur lors de l\'enregistrement du rendez-vous et des services', error);
         }
       );
@@ -167,9 +178,9 @@ export class PriseRdvComponent implements OnInit {
     if (currentUser) {
       const userData = JSON.parse(currentUser);
       this.user = userData;
-        this.preferenceService.getPreferenceServiceById(this.user.individu._id).subscribe((res) => {
-          this.prefService = res as any;
-          console.log("sevice preferer",this.prefService);
+        this.preferenceService.getPreferenceEmplById(this.user.individu._id).subscribe((res) => {
+          this.prefEmployer = res as any;
+          console.log("employer preferer",this.prefEmployer);
         })
   }
   }
