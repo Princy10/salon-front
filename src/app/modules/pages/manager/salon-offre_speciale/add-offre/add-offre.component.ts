@@ -12,7 +12,8 @@ export class AddOffreComponent {
   services: any[] = [];
   offreData: any = {};
     
-
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
 
   constructor(
     private salonService: SalonService,
@@ -40,9 +41,18 @@ export class AddOffreComponent {
   ajout_offre() {
     this.offreServicce.createOffreSpeciale(this.offreData).subscribe(response => {
       console.log('Insertion offre réussie', response);
+
+      this.showSuccessAlert = true;
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 5000);
       this.router.navigate(['/list-offre']);
     }, error => {
       console.error('Erreur lors de l\'insertion offre', error);
+      this.showAlert = true;
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 10000);
     });
   }
 

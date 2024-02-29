@@ -29,6 +29,9 @@ export class ListOffreComponent {
   itemsPerPage = 5;
   filterString = "";
 
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+
   constructor(private offreServicce: OffreSpecialeService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -79,9 +82,17 @@ export class ListOffreComponent {
     this.offreServicce.updateOffre(id_offre, this.offreById).subscribe(
       (response) => {
         console.log(response);
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       },
       (error) => {
         console.error("Erreur lors de la mise à jour du service :", error);
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 10000);
       }
     );
   }  
@@ -90,9 +101,18 @@ export class ListOffreComponent {
     this.offreServicce.deleteOffre(id_offre).subscribe(
       (res) => {
          console.log("Service supprimé avec succès :", res);
+         this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
+         
       },
       (error) => {
         console.error("Erreur lors de la suppression du service :", error);
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 10000);
       }
     );
   }  

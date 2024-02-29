@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../../services/user/user.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -13,13 +14,15 @@ export class RegisterComponent {
   showAlert: boolean = false;
   showSuccessAlert: boolean = false;
 
-  constructor(private userService: UserService,  private router: Router) {}
+  constructor(private userService: UserService,  private router: Router, private spinner: NgxSpinnerService) {}
 
   register() {
+    this.spinner.show('spinR');
     this.userService.register(this.user).subscribe(
       (response) => {
         console.log('Utilisateur enregistré avec succès : ', response);
 
+        this.spinner.hide('spinR');
         this.showSuccessAlert = true;
         setTimeout(() => {
           this.showAlert = false;
@@ -31,6 +34,7 @@ export class RegisterComponent {
         console.log('login error');
         console.error(error);
 
+        this.spinner.hide('spinR');
         this.showAlert = true;
         setTimeout(() => {
           this.showAlert = false;

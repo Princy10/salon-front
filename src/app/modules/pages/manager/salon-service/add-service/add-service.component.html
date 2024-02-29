@@ -30,6 +30,17 @@
                     <div class="form-group"></div>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 </form>
+                <div *ngIf="showSuccessAlert">
+                    <alert type="success" [dismissible]="true" (onClosed)="showAlert = false">
+                      Requête traitée avec succès
+                    </alert>
+                </div>
+        
+                <div *ngIf="showAlert">
+                <alert type="danger" [dismissible]="true" (onClosed)="showAlert = false">
+                    Une erreur s'est produite
+                </alert>
+                </div>
             </div>
         </div>
     </div>

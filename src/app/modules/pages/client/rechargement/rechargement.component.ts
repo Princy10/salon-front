@@ -15,6 +15,11 @@ export class RechargementComponent {
     "id_individu": "",
     "solde": ""
   };
+
+
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+  
   constructor(
    private rechargementService: RechargementService,
    private router: Router
@@ -56,9 +61,19 @@ export class RechargementComponent {
         (response) => {
           console.log('depot succée');
           this.router.navigate(['/rdv']);
+
+          this.showSuccessAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 5000);
         },
         (error) => {
           console.error('depot erreur', error);
+
+          this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 10000);
         }
       );
     }

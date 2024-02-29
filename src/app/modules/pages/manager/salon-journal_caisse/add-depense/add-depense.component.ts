@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { JournalCaisseService } from 'src/app/modules/services/journal_caisse/journal-caisse.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-depense',
@@ -11,15 +12,20 @@ export class AddDepenseComponent {
   montant: string = '';
   libeler: string= '';
 
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+
   constructor(
    private journalCaisseService: JournalCaisseService,
-   private router: Router
+   private router: Router,
+   private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
   }
 
   addDepense(): void {
+    this.spinner.show('spinR');
     const currentUserString = localStorage.getItem("currentUser");
 
     if (currentUserString) {
@@ -41,10 +47,21 @@ export class AddDepenseComponent {
       this.journalCaisseService.createDepense(depenseData).subscribe(
         (response) => {
           console.log('depense ajouter avec succes ');
+
+          this.spinner.hide('spinR');
+          this.showSuccessAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 5000);
           this.router.navigate(['/list-journal']);
         },
         (error) => {
           console.error('depense erreur', error);
+          this.spinner.hide('spinR');
+          this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 10000);
         }
       );
       }

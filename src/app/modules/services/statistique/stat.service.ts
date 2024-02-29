@@ -32,4 +32,10 @@ export class StatService {
       headers: this.getHeaders(),
     });
   }
+
+  getStatMoyenTravail(): Observable<any> {
+    return this.http.get(`${environments.BASE_URL}/stat/temps-travail`, {
+      headers: this.getHeaders(),
+    });
+  }
 }

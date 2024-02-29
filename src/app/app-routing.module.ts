@@ -26,6 +26,7 @@ import { ReservationComponent } from './modules/pages/manager/statistique/reserv
 import { BeneficeComponent } from './modules/pages/manager/statistique/benefice/benefice.component';
 import { SuiviTacheComponent } from './modules/pages/employer/suivi-tache/suivi-tache.component';
 import { HistoriquePaiementComponent } from './modules/pages/employer/historique-paiement/historique-paiement.component';
+import { TempsMoyenTravailComponent } from './modules/pages/manager/statistique/temps-moyen-travail/temps-moyen-travail.component';
 
 const routes: Routes = [
   // without layout
@@ -116,6 +117,10 @@ const routes: Routes = [
       {
         path: 'paiement-detail/:id',
         component: PaiementDetailComponent,
+      },
+      {
+        path: 'stat/temps-moyen-travail',
+        component: TempsMoyenTravailComponent,
       },
       {
         path: 'stat/reservation',

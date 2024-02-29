@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-12 mb-4">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Temps moyen de travail des employés</h6>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <canvas id="myChart" style="height: 40%;"></canvas>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-3 mb-3" (click)="toggleDetails()">Afficher/Masquer les détails</button>
+          <div class="row" *ngIf="showDetails">
+            <div *ngFor="let personne of travauxData" class="col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-header text-dark">
+                  {{ personne.nom }} {{ personne.prenom }}
+                </div>
+                <div class="card-body">
+                  <!-- <p>Temps moyen de travail : {{ personne.tempsMoyen }} minutes</p> -->
+                  <p>Travaux :</p>
+                  <ul class="list-group">
+                    <li *ngFor="let travail of personne.travaux" class="list-group-item">
+                      {{ travail.nom }}: {{ travail.durer }} minutes
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>     
+          <ngx-spinner [name]="'spinR'" bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "line-spin-fade" [fullScreen] = "false"><p style="color: white" ></p></ngx-spinner>
+        </div>
+      </div>
+    </div>
+  </div>  

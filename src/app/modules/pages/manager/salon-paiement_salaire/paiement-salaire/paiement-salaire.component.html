@@ -29,6 +29,17 @@
                         </button>
                     </div>
                 </div>
+                <div *ngIf="showSuccessAlert">
+                    <alert type="success" [dismissible]="true" (onClosed)="showAlert = false">
+                      Requête traitée avec succès
+                    </alert>
+                </div>
+        
+                <div *ngIf="showAlert">
+                <alert type="danger" [dismissible]="true" (onClosed)="showAlert = false">
+                    Une erreur s'est produite
+                </alert>
+                </div>
                 <ngx-spinner [name]="'spinR'" bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "line-spin-fade" [fullScreen] = "false"><p style="color: white" ></p></ngx-spinner>        
             </div>
         </div>

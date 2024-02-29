@@ -14,6 +14,9 @@ export class PaiementSalaireComponent {
   montant: string = '';
   employer: string= '';
   listEmployer: any[] = [];
+
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
   
   constructor(
    private journalCaisseService: JournalCaisseService,
@@ -57,9 +60,17 @@ export class PaiementSalaireComponent {
       this.journalCaisseService.paiementSalaire(depenseData).subscribe(
         (response) => {
           console.log('salaire payer avec succes ');
+          this.showSuccessAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 5000);
           this.router.navigate(['/list-journal']);
         },
         (error) => {
+          this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 10000);
           console.error('salaire erreur', error);
         }
       );

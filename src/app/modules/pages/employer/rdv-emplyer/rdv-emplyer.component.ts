@@ -20,6 +20,9 @@ export class RdvEmplyerComponent {
   };
   
 
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+
   constructor(private rdvService: RdvService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -49,9 +52,19 @@ export class RdvEmplyerComponent {
     this.rdvService.updateEtatRdvValider(id).subscribe(
       (res) => {
         console.log("Rendez-vous mis à jour avec succès :", res);
+
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       },
       (error) => {
         console.error("Erreur lors de la mise à jour du rendez-vous :", error);
+
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 10000);
       }
     );
   }
@@ -60,9 +73,19 @@ export class RdvEmplyerComponent {
     this.rdvService.updateEtatRdvRefuser(id).subscribe(
       (res) => {
         console.log("Rendez-vous mis à jour avec succès :", res);
+
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       },
       (error) => {
         console.error("Erreur lors de la mise à jour du rendez-vous :", error);
+
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 10000);
       }
     );
   }

@@ -23,6 +23,9 @@ export class ListServiceComponent implements OnInit {
   itemsPerPage = 5;
   filterString = "";
 
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+
   constructor(private salonService: SalonService, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
@@ -85,9 +88,17 @@ export class ListServiceComponent implements OnInit {
             this.services[i] = this.serviceById;
           }
         });
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       },
       (error) => {
         console.error("Erreur lors de la mise à jour du service :", error);
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 10000);
       }
     );
   }
@@ -100,9 +111,17 @@ export class ListServiceComponent implements OnInit {
         this.services = this.services.filter(
           (service) => service._id !== id_service
         );
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       },
       (error) => {
         console.error("Erreur lors de la suppression du service :", error);
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 10000);
       }
     );
   }

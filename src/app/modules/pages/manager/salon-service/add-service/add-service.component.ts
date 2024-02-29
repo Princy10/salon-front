@@ -19,6 +19,9 @@ export class AddServiceComponent implements OnInit {
   };
   socket!: Socket;
 
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+
   constructor(
     private serciceSalon: SalonService,
     private router: Router) {}
@@ -32,9 +35,17 @@ export class AddServiceComponent implements OnInit {
     this.serciceSalon.createService(this.serviceData).subscribe(response => {
       // console.log('Insertion réussie', response);
       this.socket.emit('addService');
+      this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       this.router.navigate(['/list-service']);
     }, error => {
       console.error('Erreur lors de l\'insertion', error);
+      this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 10000);
     });
   }
 

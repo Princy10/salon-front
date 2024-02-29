@@ -34,6 +34,7 @@
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register" class="link-danger">Register</a></p>
+            <ngx-spinner [name]="'spinR'" bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "line-spin-fade" [fullScreen] = "false"><p style="color: white" ></p></ngx-spinner>
           </div>
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="button" class="btn btn-secondary btn-sm" style="padding-left: 2.5rem; padding-right: 2.5rem;" data-toggle="modal"
@@ -42,8 +43,7 @@
         </form>
       </div>
     </div>
-    <ngx-spinner *ngIf="loading" [type]="'border'" [size]="'medium'" [color]="'#333333'"></ngx-spinner>
-
+    
     <div *ngIf="showAlert">
       <alert type="danger" [dismissible]="true" (onClosed)="showAlert = false">
         Une erreur s'est produite lors de la connexion. Veuillez réessayer.

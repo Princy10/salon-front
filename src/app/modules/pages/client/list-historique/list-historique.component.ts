@@ -20,6 +20,9 @@ export class ListHistoriqueComponent {
     services: [{ titre: "", prix: "" }]
   };
 
+  showAlert: boolean = false;
+  showSuccessAlert: boolean = false;
+
   constructor(
     private rdvService: RdvService, 
     private router: Router,
@@ -55,9 +58,19 @@ export class ListHistoriqueComponent {
     this.rdvService.updateEtatRdvAnnuler(id).subscribe(
       (res) => {
         console.log("Rendez-vous mis à jour avec succès :", res);
+
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       },
       (error) => {
         console.error("Erreur lors de la mise à jour du rendez-vous :", error);
+
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 10000);
       }
     );
   }
@@ -69,9 +82,19 @@ export class ListHistoriqueComponent {
           console.log('Traitement inséré avec succès');
           const traitementId = traitementEnregistre.traitementEnregistre._id;
           this.router.navigate(['/paiement-detail', traitementId, { idRdv: id }]);
+
+          this.showSuccessAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 5000);
         },
         error => {
           console.error('Erreur lors de l\'insertion du traitement :', error);
+          
+          this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 10000);
         }
       );
   }
