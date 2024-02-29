@@ -40,6 +40,7 @@ import { SuiviTacheComponent } from './modules/pages/employer/suivi-tache/suivi-
 import { HistoriquePaiementComponent } from './modules/pages/employer/historique-paiement/historique-paiement.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TempsMoyenTravailComponent } from './modules/pages/manager/statistique/temps-moyen-travail/temps-moyen-travail.component';
+import { HoraireTravailComponent } from './modules/pages/employer/horaire-travail/horaire-travail.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { TempsMoyenTravailComponent } from './modules/pages/manager/statistique/
     SuiviTacheComponent,
     HistoriquePaiementComponent,
     TempsMoyenTravailComponent,
+    HoraireTravailComponent,
   ],
   imports: [
     BrowserModule,

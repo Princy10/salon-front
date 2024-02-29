@@ -65,23 +65,18 @@
           </div>
         </div>
         
-        
-
-        <br />
+        <br/>
         <div class="row">
           <div class="col-md-4">
             <label for="inputEmail4">Selection employer:</label>
-            <select class="form-select" aria-label="Select Employer" [(ngModel)]="selectedEmployerId">
-              <option selected>Select Employer</option>
-              <option
-                *ngFor="let employer of listEmployer"
-                [value]="employer._id"
-              >
+            <select class="form-select" aria-label="Select Employer" [(ngModel)]="selectedEmployerId" (change)="getHoraireEmpl(selectedEmployerId)">
+              <option selected disabled>Select Employer</option>
+              <option *ngFor="let employer of listEmployer" [value]="employer._id">
                 {{ employer.nom }} {{ employer.prenom }}
               </option>
             </select>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label for="form3Example3">Date et heure:</label>
             <input
               type="datetime-local"
@@ -91,19 +86,32 @@
               [(ngModel)]="selectedDate" 
             />
           </div>
+          <div class="col-md-4">
+            <label for="horaireLabel">Horaire de travail:</label>
+            <ul class="list-group">
+              <li class="list-group-item">
+                {{ horaireTravail ? 'Début : ' + horaireTravail.heure_debut + ', Fin : ' + horaireTravail.heure_fin : 'L\'employé(e) n\'a pas encore défini son heure de travail' }}
+              </li>
+            </ul>
+           
+          </div>
+                   
           <div class="col-md-1"></div>
-          <div class="col-md-3">
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-10"></div>
+          <div class="col-md-2">
             <button
-              class="btn btn-success"
-              data-toggle="modal"
-              data-target="#createRdv"
-            >
-              Valider <i class="fas fa-check"></i>
-            </button>
+                class="btn btn-success"
+                data-toggle="modal"
+                data-target="#createRdv"
+              >
+                Valider <i class="fas fa-check"></i>
+              </button>
           </div>
         </div>
       </div>
-      <div *ngIf="showSuccessAlert">
+      <div *ngIf="showSuccessAlertM">
         <alert type="success" [dismissible]="true" (onClosed)="showAlert = false">
           Rendez vous enregistré avec succès
         </alert>
@@ -151,9 +159,9 @@
 </div>
 
 <div class="row justify-content-center">
-  <div class="col-md-8">
+  <div class="col-md-6">
     <div class="card shadow-lg rounded-lg">
-      <div class="card-header bg-gradient-primary text-white">
+      <div class="card-header text-dark">
         <h5 class="m-0 font-weight-bold">Vos préférences</h5>
       </div>
       <div class="card-body">
@@ -172,7 +180,7 @@
           </li>
         </ul>
         <div class="mt-4">
-          <label for="form3Example3" class="form-label">Sélectionner une date et une heure :</label>
+          <h6 class="m-0 font-weight-bold">Sélectionner une date et une heure :</h6>
           <input
             type="datetime-local"
             id="form3Example3"
@@ -186,6 +194,50 @@
         </div>
       </div>
     </div>
+    <ngx-spinner [name]="'spin'" bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "line-spin-fade" [fullScreen] = "false"><p style="color: white" >Loading...</p></ngx-spinner>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card shadow-lg rounded-lg">
+      <div class="card-header text-dark">
+        <h5 class="m-0 font-weight-bold">Mettre a jour votre preference</h5>
+      </div>
+      <div class="card-body">
+        <div class="mt-4">
+          <h6 class="m-0 font-weight-bold">Selection employer préféré :</h6>
+          <select class="form-select" aria-label="Select Employer" name="employeePreference" [(ngModel)]="editedEmployeePreference">
+            <option selected disabled>Select Employer</option>
+            <option *ngFor="let employer of listEmployer" [value]="employer._id">
+              {{ employer.nom }} {{ employer.prenom }}
+            </option>
+          </select>
+        </div>
+        <div class="mt-4">
+          <h6 class="m-0 font-weight-bold">Service préféré :</h6>
+          <select class="form-select" aria-label="Select Service" name="servicePreference" [(ngModel)]="editedServicePreference">
+            <option selected disabled>Select Service</option>
+            <option *ngFor="let service of services" [value]="service._id">
+              {{ service.titre }} | {{ service.prix }}ar
+            </option>
+          </select>
+        </div>
+        <div class="mt-4 d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary" (click)="updatePreferences()">Update</button>
+        </div>
+      </div>      
+    </div>
+    <div *ngIf="showSuccessAlert">
+      <alert type="success" [dismissible]="true" (onClosed)="showAlert = false">
+        Requete succès
+      </alert>
+    </div>
+
+    <div *ngIf="showAlertM">
+      <alert type="danger" [dismissible]="true" (onClosed)="showAlert = false">
+        Une erreur s'est produite
+      </alert>
+    </div>
+    <ngx-spinner [name]="'spin'" bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "line-spin-fade" [fullScreen] = "false"><p style="color: white" >Loading...</p></ngx-spinner>
   </div>
 </div>
 

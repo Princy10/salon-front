@@ -39,7 +39,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="date" id="form3Example3" [(ngModel)]="user.date_naissance" class="form-control form-control-lg" name="date_naissance"/>
+                        <input type="date" id="form3Example3" [(ngModel)]="user.date_naissance" (input)="updateDateOfBirth($event)" class="form-control form-control-lg" name="date_naissance"/>
                         <label class="form-label" for="form3Example3">Date of birth</label>
                     </div>
                     <div class="col-md-6">

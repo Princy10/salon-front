@@ -27,6 +27,7 @@ import { BeneficeComponent } from './modules/pages/manager/statistique/benefice/
 import { SuiviTacheComponent } from './modules/pages/employer/suivi-tache/suivi-tache.component';
 import { HistoriquePaiementComponent } from './modules/pages/employer/historique-paiement/historique-paiement.component';
 import { TempsMoyenTravailComponent } from './modules/pages/manager/statistique/temps-moyen-travail/temps-moyen-travail.component';
+import { HoraireTravailComponent } from './modules/pages/employer/horaire-travail/horaire-travail.component';
 
 const routes: Routes = [
   // without layout
@@ -141,6 +142,10 @@ const routes: Routes = [
       {
         path: 'historique-paiement',
         component: HistoriquePaiementComponent,
+      },
+      {
+        path: 'horaire-travail',
+        component: HoraireTravailComponent,
       },
     ],
   },

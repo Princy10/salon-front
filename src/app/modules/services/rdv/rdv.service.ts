@@ -56,4 +56,8 @@ export class RdvService {
   getCommissionJournee(Data: any): Observable<any> {
     return this.http.post<any>(`${environments.BASE_URL}/traitement/commission-journee`, Data);
   }
+
+  updatePreferences(idClient: string, idEmployeur: string, id_service: string): Observable<any> {
+    return this.http.put<any>(`${environments.BASE_URL}/prise_rdv/update_preference/${idClient}/${idEmployeur}/${id_service}`, {});
+  }
 }

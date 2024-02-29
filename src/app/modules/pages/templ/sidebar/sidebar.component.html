@@ -75,7 +75,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-gift"></i>
                     <span>Offre spéciale</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -90,7 +90,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCaisse"
                     aria-expanded="true" aria-controls="collapseCaisse">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-cash-register"></i>
                     <span>Caisse</span>
                 </a>
                 <div id="collapseCaisse" class="collapse" aria-labelledby="headingCaisse" data-parent="#accordionSidebar">
@@ -138,13 +138,13 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="suivi-tache">
-                        <i class="fas fa-fw fa-clock"></i>
+                        <i class="fas fa-fw fa-tasks"></i>
                         <span>Suivi des tâches</span></a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="historique-paiement">
-                        <i class="fas fa-fw fa-clock"></i>
+                        <i class="fas fa-fw fa-history"></i>
                         <span>Hitorique de paiement</span></a>
                 </li>
                 </div>
@@ -253,11 +253,11 @@
                                 Profile
                             </a>
                             <a class="dropdown-item" href="/rechargement" *ngIf="user.role == 'client' || user.role == 'employer'">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <i class="fas fa-wallet fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Porte feuille
                             </a>
-                            <a class="dropdown-item" href="#" *ngIf="user.role == 'employer'">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                            <a class="dropdown-item" href="/horaire-travail" *ngIf="user.role == 'employer'">
+                                <i class="fas fa-clock fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Horaire de travail
                             </a>
                             <div class="dropdown-divider"></div>

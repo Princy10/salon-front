@@ -42,4 +42,8 @@ export class RegisterComponent {
       }
     );
   }
+
+  updateDateOfBirth(event: any) {
+    this.user.date_naissance = event.target.value;
+  }
 }
